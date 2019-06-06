@@ -1,23 +1,25 @@
-package com.example.webapitest.services
+package com.example.chareta.webservice
 
 import com.example.chareta.data.Item
-import retrofit2.Call
+import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
 
 
 interface ItemService {
-    @GET("item")
-    fun getItems(): Call<List<Item>>
+
+    @GET("items")
+    fun getItems(): Deferred<Response<List<Item>>>
 
     @GET("items/{id}")
-    fun getItem(@Path("id") id: Int): Call<Item>
+    fun getItem(@Path("id") id: Long): Deferred<Response<Item>>
 
-    @POST("item")
-    fun createItem(@Body newItem: Item): Call<Item>
+    @POST("items")
+    fun createItem(@Body newItem: Item): Deferred<Response<Void>>
 
     @FormUrlEncoded
-    @PUT("item/id")
+    @PUT("items/id")
     fun updateItem(
         @Path("id") id: Int,
         @Field("item_name") item_name: String,
@@ -25,8 +27,8 @@ interface ItemService {
         @Field("starting_price") starting_price: Long,
         @Field("post_date") date: Date,
         @Field("expiry_date") expiry_date: Date
-    ): Call<Item>
+    ): Deferred<Response<Void>>
 
-    @DELETE("item/id")
-    fun deleteItem(@Path("id") id:Int):Call<Void>
+    @DELETE("items/id")
+    fun deleteItem(@Path("id") id:Int): Deferred<Response<Void>>
 }
