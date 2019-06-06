@@ -14,19 +14,19 @@ class MainActivity : AppCompatActivity(), NavigationHost {
     private val onNavigationItemSelectedLitsner = BottomNavigationView.OnNavigationItemSelectedListener {
         when(it.itemId) {
             R.id.bottom_posted -> {
-                navigateTo(PostedItemFragment(), true)
+                navigateTo(PostedItemFragment(), false)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_bids -> {
-                navigateTo(YourBidsFragment(), true)
+                navigateTo(YourBidsFragment(), false)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_manage -> {
-                navigateTo(YourPostsFragment(), true)
+                navigateTo(YourPostsFragment(), false)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_status -> {
-                navigateTo(StatusFragment(), true)
+                navigateTo(StatusFragment(), false)
                 return@OnNavigationItemSelectedListener true
             }
         }

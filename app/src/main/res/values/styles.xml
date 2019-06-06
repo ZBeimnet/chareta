@@ -1,8 +1,8 @@
 <!--suppress AndroidDomInspection -->
 <resources>
     <style name="Theme.Chareta.Autumn" parent="Theme.Chareta">
-        <item name="colorPrimary">#FFCF44</item>
-        <item name="colorPrimaryDark">#FD9725</item>
+        <item name="colorPrimary">#FD9725</item>
+        <item name="colorPrimaryDark">#FFCF44</item>
         <item name="colorAccent">#FD9725</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorError">#FD9725</item>
