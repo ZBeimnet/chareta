@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Chareta</string>
+    <string name="app_name">ጫረታ</string>
     <string name="app_logo">LOGO</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="button_login">LOGIN</string>
     <string name="button_cancel">CANCEL</string>
     <string name="click_here">not registered? click here</string>
-    <string name="register_form">Register Form</string>
+    <string name="register_form">Registration Form</string>
     <string name="hint_phonenumber">Phone No</string>
     <string name="hint_address">Address</string>
     <string name="hint_confirm_password">Confirm Password</string>
