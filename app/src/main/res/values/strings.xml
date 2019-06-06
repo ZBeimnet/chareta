@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Chareta</string>
+    <string name="app_logo">LOGO</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">LOGIN</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="click_here">not registered? click here</string>
+    <string name="register_form">Register Form</string>
+    <string name="hint_phonenumber">Phone No</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="button_register">Register</string>
+    <string name="button_back">Back</string>
+    <string name="search_title">Search</string>
+    <string name="filter_title">Filter</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_description">Item Description</string>
+    <string name="starting_price">Starting Price:</string>
+    <string name="posted_by">Posted By:</string>
+    <string name="expiry_date">Expiry Date:</string>
+    <string name="post_item">Post Item</string>
+</resources>
