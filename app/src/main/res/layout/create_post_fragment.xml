@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/app_bar"
@@ -75,19 +75,6 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:maxLines="1" android:id="@+id/startingprice_Edittext"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_text_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/post_date">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/post_date_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
