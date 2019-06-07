@@ -39,6 +39,8 @@ class RegisterFragment: Fragment() {
         val activity = activity as MainActivity?
         activity?.hideBottomBar(true)
 
+        val isConnected = activity?.connected()
+
         /////
         userNameEditText = view.register_username_edit_text
         phoneEditText = view.register_phone_edit_text
@@ -54,9 +56,14 @@ class RegisterFragment: Fragment() {
         }
 
         view.register_button.setOnClickListener {
-            userViewModel.registerUser(readFields())
-            clearFields()
-            registrationConfirmation.text = "Successfully Registered!"
+            if(isConnected!!) {
+                userViewModel.registerUser(readFields())
+                clearFields()
+                registrationConfirmation.text = "Successfully Registered!"
+            }
+            else {
+                registrationConfirmation.text = "Not connected to a network!"
+            }
         }
 
 

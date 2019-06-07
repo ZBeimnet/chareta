@@ -1,5 +1,8 @@
 package com.example.chareta
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -67,6 +70,16 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         }
 
         transaction.commit()
+    }
+
+    public fun connected():Boolean {
+
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+
+        return networkInfo != null && networkInfo.isConnected
+
     }
 
 }
