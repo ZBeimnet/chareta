@@ -16,4 +16,14 @@ class ItemRepository(private val itemService: ItemService) {
     fun getItemByIdAsync(id: Long): Deferred<Response<Item>> {
         return itemService.getItem(id)
     }
+
+    fun addItemAsync(item: Item): Deferred<Response<Void>> {
+        return itemService.createItem(item)
+    }
+
+    fun deleteItemAsync(id: Long): Deferred<Response<Void>> {
+        return itemService.deleteItem(id)
+    }
+
+
 }

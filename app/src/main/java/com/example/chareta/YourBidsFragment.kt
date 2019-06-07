@@ -2,6 +2,7 @@ package com.example.chareta
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
@@ -27,5 +28,12 @@ class YourBidsFragment: Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.post_item -> Toast.makeText(context, "hdhfkd", Toast.LENGTH_LONG).show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

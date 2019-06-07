@@ -14,6 +14,7 @@ import com.example.chareta.data.ItemList
 import com.example.chareta.repository.ItemRepository
 import com.example.chareta.webservice.ItemService
 import com.example.chareta.webservice.ServiceBuilder
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,7 +34,6 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun getAllItems(): LiveData<List<Item>> {
-
         val allItems: MutableLiveData<List<Item>> = MutableLiveData()
 
 //        viewModelScope.launch(Dispatchers.IO) {
@@ -111,6 +111,20 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         return item
     }
 
+
+    fun addItem(item: Item) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response: Response<Void> = itemRepository.addItemAsync(item).await()
+            Log.d("item_added", response.message())
+        }
+    }
+
+    fun deleteItem(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response: Response<Void> = itemRepository.deleteItemAsync(id).await()
+            Log.d("item_deleted", response.message())
+        }
+    }
 
 
 }
