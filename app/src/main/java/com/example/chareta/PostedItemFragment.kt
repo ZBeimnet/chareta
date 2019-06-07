@@ -40,9 +40,9 @@ class PostedItemFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.posted_item_fragment, container, false)
-
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
+
 
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
@@ -65,13 +65,15 @@ class PostedItemFragment: Fragment() {
         postedByTextView = view.posted_by_text_view
         expiryDateTextView = view.expiry_date_text_view
 
-//        itemViewModel.getItemById(5).observe(this, Observer {
-//            val item = it
-//            //Log.d("item_Name", item.item_name)
-//            itemNameTextView.text = item?.item_name
-//            startingPriceTextView.text = item?.starting_price.toString()
-//            expiryDateTextView.text = item?.expiry_date.toString()
-//        })
+
+
+     itemViewModel.getItemById(5).observe(this, Observer {
+            val item = it
+            //Log.d("item_Name", item.item_name)
+            itemNameTextView.text = item?.item_name
+            startingPriceTextView.text = item?.starting_price.toString()
+            expiryDateTextView.text = item?.expiry_date.toString()
+        })
 
         return view
     }
@@ -79,6 +81,13 @@ class PostedItemFragment: Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

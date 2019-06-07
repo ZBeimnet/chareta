@@ -20,5 +20,10 @@
     <string name="posted_by">Posted By:</string>
     <string name="expiry_date">Expiry Date:</string>
     <string name="post_item">Post Item</string>
+
     <string name="registration_confirmation">Successfully Registered!</string>
+
+    <string name="post_date">Post Date</string>
+    <string name="post_btn">Post</string>
+
 </resources>

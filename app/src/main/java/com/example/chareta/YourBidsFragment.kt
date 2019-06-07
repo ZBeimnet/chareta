@@ -30,10 +30,14 @@ class YourBidsFragment: Fragment() {
         super.onCreateOptionsMenu(menu, menuInflater)
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.post_item -> Toast.makeText(context, "hdhfkd", Toast.LENGTH_LONG).show()
+        when(item.itemId){
+            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
         }
+
         return super.onOptionsItemSelected(item)
     }
+
+
 }
