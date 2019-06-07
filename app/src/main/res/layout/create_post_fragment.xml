@@ -7,6 +7,18 @@
                                                    android:background="@color/loginPageBackgroundColor"
                                                    tools:context=".CreatePostFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_bar"
+                style="@style/Widget.Chareta.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@android:color/white"
+                app:title="@string/app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +107,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
-
+           <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toStartOf="@id/post_button"
+            android:layout_toLeftOf="@id/post_button"
+            android:text="@string/button_back" />
             <com.google.android.material.button.MaterialButton
                     android:id="@+id/post_button"
                     android:layout_width="wrap_content"

@@ -40,9 +40,9 @@ class PostedItemFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.posted_item_fragment, container, false)
-
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
+
 
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
