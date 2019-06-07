@@ -13,7 +13,7 @@ import java.util.*
 interface ItemService {
 
     @GET("items")
-    fun getItems(): Deferred<Response<List<Item>>>
+    fun getItems(): Deferred<Response<ItemList>>
 
     @GET("items/{id}")
     fun getItem(@Path("id") id: Long): Deferred<Response<Item>>

@@ -65,7 +65,7 @@ class PostedItemFragment: Fragment() {
         postedByTextView = view.posted_by_text_view
         expiryDateTextView = view.expiry_date_text_view
 
-        itemViewModel.getAllItems().observe(this, Observer {
+     itemViewModel.getAllItems().observe(this, Observer {
             val item = it?.get(0)
             //Log.d("item_Name", item.item_name)
             itemNameTextView.text = item?.item_name
