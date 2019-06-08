@@ -1,9 +1,7 @@
 package com.example.chareta
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,15 +10,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemList
 import com.example.chareta.viewmodel.ItemViewModel
-import kotlinx.android.synthetic.main.posted_item_fragment.*
+import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 
 @Suppress("PLUGIN_WARNING")
 class PostedItemFragment: Fragment() {
 
     private lateinit var itemViewModel: ItemViewModel
+    private lateinit var userViewModel: UserViewModel
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var allItems: List<Item>
@@ -34,6 +32,7 @@ class PostedItemFragment: Fragment() {
         setHasOptionsMenu(true)
 
         itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
     }
 
@@ -47,20 +46,17 @@ class PostedItemFragment: Fragment() {
 
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
-//        recyclerView = view.recycler_view
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.setHasFixedSize(true)
-//
-//
-//
-//        itemViewModel.getAllItems().observe(this, Observer<ItemList> {
-//            recyclerView.adapter = ItemRecyclerAdapter(it)
-//        })
+        recyclerView = view.recycler_view
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
 
 
 
-        ////////
+        itemViewModel.getAllItems().observe(this, Observer {
+            recyclerView.adapter = ItemRecyclerAdapter(it)
+        })
 
+<<<<<<< HEAD
         itemNameTextView = view.item_name_text_view
         startingPriceTextView = view.starting_price_text_view
         expiryDateTextView = view.expiry_date_text_view
@@ -87,6 +83,37 @@ class PostedItemFragment: Fragment() {
             })
         }
 >>>>>>> 7e151279f256c4bf9f616e627810d2dbf08ed539
+=======
+
+
+        ////////
+
+//        itemNameTextView = view.item_name_text_view
+//        startingPriceTextView = view.starting_price_text_view
+//        postedByTextView = view.posted_by_text_view
+//        expiryDateTextView = view.expiry_date_text_view
+
+
+//        if(isConnected!!) {
+//            itemViewModel.getAllItems().observe(this, Observer {
+//                val item = it?.get(0)
+//                //Log.d("item_Name", item.item_name)
+//                itemNameTextView.text = item?.item_name
+//                startingPriceTextView.text = item?.starting_price.toString()
+//                expiryDateTextView.text = item?.expiry_date.toString()
+//            })
+//        }
+
+//        if(isConnected!!) {
+//            userViewModel.getAllUsers().observe(this, Observer {
+//                val item = it?.get(0)
+//                //Log.d("item_Name", item.item_name)
+//                itemNameTextView.text = item?.user_name
+//                startingPriceTextView.text = item?.phone_number
+//                expiryDateTextView.text = item?.address
+//            })
+//        }
+>>>>>>> aa31085cd757e7c32fe5917e3b61055f3175b4c8
 
         return view
     }
