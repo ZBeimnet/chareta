@@ -1,3 +1,5 @@
+
+
 package com.example.chareta.data
 
 import com.squareup.moshi.JsonClass
@@ -10,4 +12,5 @@ data class User (
     val phone_number: String,
     val address: String,
     val password: String
+
 )
