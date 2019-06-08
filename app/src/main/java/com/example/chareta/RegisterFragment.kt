@@ -54,14 +54,14 @@ class RegisterFragment: Fragment() {
         }
 
         view.register_button.setOnClickListener {
-            userViewModel.registerUser(readFields())
-            clearFields()
-            registrationConfirmation.text = "Successfully Registered!"
+//            userViewModel.registerUser(readFields())
+//            clearFields()
+//            registrationConfirmation.text = "Successfully Registered!"
         }
 
 
         return view
-    }
+    }//
 
 
     private fun readFields() = User(

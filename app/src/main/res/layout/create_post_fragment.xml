@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="40dp"
+                android:layout_margiTop="40dp"
                 android:text="@string/post_item"
                 android:textAllCaps="true"
                 android:textSize="20sp" />

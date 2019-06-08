@@ -62,18 +62,18 @@ class PostedItemFragment: Fragment() {
 
         itemNameTextView = view.item_name_text_view
         startingPriceTextView = view.starting_price_text_view
-        postedByTextView = view.posted_by_text_view
         expiryDateTextView = view.expiry_date_text_view
+        postedByTextView = view.posted_by_text_view
 
 
 
-     itemViewModel.getItemById(5).observe(this, Observer {
-            val item = it
-            //Log.d("item_Name", item.item_name)
-            itemNameTextView.text = item?.item_name
-            startingPriceTextView.text = item?.starting_price.toString()
-            expiryDateTextView.text = item?.expiry_date.toString()
-        })
+//     itemViewModel.getItemById(5).observe(this, Observer {
+//            val item = it
+//            //Log.d("item_Name", item.item_name)
+//            itemNameTextView.text = item?.item_name
+//            startingPriceTextView.text = item?.starting_price.toString()
+//            expiryDateTextView.text = item?.expiry_date.toString()
+//        })
 
         return view
     }
