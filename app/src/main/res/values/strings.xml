@@ -25,5 +25,6 @@
 
     <string name="post_date">Post Date</string>
     <string name="post_btn">Post</string>
+    <string name="pick_date">Pickdate</string>
 
 </resources>
