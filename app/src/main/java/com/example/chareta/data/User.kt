@@ -1,9 +1,16 @@
+
+
 package com.example.chareta.data
 
+import com.squareup.moshi.JsonClass
+
+
+@JsonClass(generateAdapter = true)
 data class User (
-    private val id: Long,
-    private val user_name: String,
-    private val phone_number: String,
-    private val address: String,
-    private val password: String
+    val id: Long,
+    val user_name: String,
+    val phone_number: String,
+    val address: String,
+    val password: String
+
 )

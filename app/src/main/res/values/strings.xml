@@ -16,8 +16,14 @@
     <string name="filter_title">Filter</string>
     <string name="item_name">Item Name</string>
     <string name="item_description">Item Description</string>
-    <string name="starting_price">Starting Price:</string>
-    <string name="posted_by">Posted By:</string>
-    <string name="expiry_date">Expiry Date:</string>
+    <string name="starting_price">Starting Price</string>
+    <string name="posted_by">Posted By</string>
+    <string name="expiry_date">Expiry Date</string>
     <string name="post_item">Post Item</string>
+
+    <string name="registration_confirmation">Successfully Registered!</string>
+
+    <string name="post_date">Post Date</string>
+    <string name="post_btn">Post</string>
+
 </resources>

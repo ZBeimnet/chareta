@@ -1,6 +1,7 @@
 package com.example.chareta.webservice
 
 import com.example.chareta.data.Item
+import com.example.chareta.data.ItemsEmbedded
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
@@ -10,7 +11,7 @@ import java.util.*
 interface ItemService {
 
     @GET("items")
-    fun getItems(): Deferred<Response<List<Item>>>
+    fun getItems(): Deferred<Response<ItemsEmbedded>>
 
     @GET("items/{id}")
     fun getItem(@Path("id") id: Long): Deferred<Response<Item>>
@@ -30,5 +31,5 @@ interface ItemService {
     ): Deferred<Response<Void>>
 
     @DELETE("items/id")
-    fun deleteItem(@Path("id") id:Int): Deferred<Response<Void>>
+    fun deleteItem(@Path("id") id: Long): Deferred<Response<Void>>
 }
