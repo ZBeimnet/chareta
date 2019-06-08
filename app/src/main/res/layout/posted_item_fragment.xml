@@ -19,79 +19,79 @@
                 app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:scrollbars="vertical"/>-->
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="70dp"
-            app:cardBackgroundColor="?attr/colorPrimaryDark"
-            app:cardCornerRadius="4dp">
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:background="#FFFFFF"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    <!--<com.google.android.material.card.MaterialCardView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="150dp"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginTop="70dp"-->
+            <!--app:cardBackgroundColor="?attr/colorPrimaryDark"-->
+            <!--app:cardCornerRadius="4dp">-->
 
-            <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/cardview_dark_background"/>
+        <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:background="#FFFFFF"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="8dp">-->
+
+            <!--<ImageView-->
+                    <!--android:layout_width="125dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/cardview_dark_background"/>-->
 
 
-            <LinearLayout
-                    android:layout_width="200dp"
-                    android:paddingLeft="15dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                <TextView
-                        android:id="@+id/item_name_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="@string/item_name"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
-
+            <!--<LinearLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
                 <!--<TextView-->
+                        <!--android:id="@+id/item_name_text_view"-->
                         <!--android:layout_width="match_parent"-->
                         <!--android:layout_height="wrap_content"-->
                         <!--android:padding="2dp"-->
-                        <!--android:text="@string/item_description"-->
-                        <!--android:textAppearance="?attr/textAppearanceBody1" />-->
-                <TextView
-                        android:id="@+id/starting_price_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="@string/starting_price"
-                        android:textAppearance="?attr/textAppearanceBody1" />
+                        <!--android:text="@string/item_name"-->
+                        <!--android:textAppearance="?attr/textAppearanceHeadline6" />-->
 
-                <TextView
-                        android:id="@+id/posted_by_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="@string/posted_by"
-                        android:textAppearance="?attr/textAppearanceBody1" />
-                <TextView
-                        android:id="@+id/expiry_date_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="@string/expiry_date"
-                        android:textAppearance="?attr/textAppearanceBody1" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="2dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="@string/item_description"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAppearance="?attr/textAppearanceBody1" />&ndash;&gt;-->
+                <!--<TextView-->
+                        <!--android:id="@+id/starting_price_text_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="2dp"-->
+                        <!--android:text="@string/starting_price"-->
+                        <!--android:textAppearance="?attr/textAppearanceBody1" />-->
+
+                <!--<TextView-->
+                        <!--android:id="@+id/posted_by_text_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="2dp"-->
+                        <!--android:text="@string/posted_by"-->
+                        <!--android:textAppearance="?attr/textAppearanceBody1" />-->
+                <!--<TextView-->
+                        <!--android:id="@+id/expiry_date_text_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="2dp"-->
+                        <!--android:text="@string/expiry_date"-->
+                        <!--android:textAppearance="?attr/textAppearanceBody1" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</com.google.android.material.card.MaterialCardView>-->
 
 </FrameLayout>

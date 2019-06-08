@@ -1,28 +1,20 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
-import android.app.LauncherActivity
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemList
+import com.example.chareta.data.ItemsEmbedded
 import com.example.chareta.repository.ItemRepository
 import com.example.chareta.webservice.ItemService
 import com.example.chareta.webservice.ServiceBuilder
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
-import java.time.Instant
-import java.util.*
 
 class ItemViewModel(application: Application): AndroidViewModel(application) {
 
@@ -63,11 +55,11 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         //responseBody is null
 
         viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<ItemList> = itemRepository.getAllItemsAsync().await()
+            val response: Response<ItemsEmbedded> = itemRepository.getAllItemsAsync().await()
             val responseBody = response.body()
             if(responseBody != null) {
                 withContext(Dispatchers.Main) {
-                    allItems.value = responseBody.itemLists
+                    allItems.value = responseBody.embeddedItems.allItems
                 }
             }
 

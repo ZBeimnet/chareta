@@ -1,6 +1,7 @@
 package com.example.chareta.webservice
 
 import com.example.chareta.data.User
+import com.example.chareta.data.UsersEmbedded
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
@@ -9,7 +10,7 @@ import retrofit2.http.*
 interface UserService {
 
     @GET("users")
-    fun getUsersAsync(): Deferred<Response<List<User>>>
+    fun getUsersAsync(): Deferred<Response<UsersEmbedded>>
 
     @GET("users/{id}")
     fun getUserByIdAsync(@Path("id") id: Long): Deferred<Response<User>>

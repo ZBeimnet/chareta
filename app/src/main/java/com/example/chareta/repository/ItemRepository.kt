@@ -1,15 +1,14 @@
 package com.example.chareta.repository
 
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemList
+import com.example.chareta.data.ItemsEmbedded
 import com.example.chareta.webservice.ItemService
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
 import retrofit2.Response
 
 class ItemRepository(private val itemService: ItemService) {
 
-    fun getAllItemsAsync(): Deferred<Response<ItemList>> {
+    fun getAllItemsAsync(): Deferred<Response<ItemsEmbedded>> {
         return itemService.getItems()
     }
 

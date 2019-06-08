@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemList
 
-class ItemRecyclerAdapter(private var allItems: ItemList):
+class ItemRecyclerAdapter(private var allItems: List<Item>):
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
 
 
@@ -21,17 +20,17 @@ class ItemRecyclerAdapter(private var allItems: ItemList):
     }
 
     override fun getItemCount(): Int {
-       return allItems.itemLists.size
+       return allItems.size
     }
 
-    fun setData(newItem: ItemList){
+    fun setData(newItem: List<Item>){
         this.allItems = newItem
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 
-        val item = allItems.itemLists[position]
+        val item = allItems[position]
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
         holder.expiryDate.text = item.expiry_date.toString()

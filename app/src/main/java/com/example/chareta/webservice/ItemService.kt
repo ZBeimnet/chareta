@@ -1,10 +1,8 @@
 package com.example.chareta.webservice
 
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemList
+import com.example.chareta.data.ItemsEmbedded
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
@@ -13,7 +11,7 @@ import java.util.*
 interface ItemService {
 
     @GET("items")
-    fun getItems(): Deferred<Response<ItemList>>
+    fun getItems(): Deferred<Response<ItemsEmbedded>>
 
     @GET("items/{id}")
     fun getItem(@Path("id") id: Long): Deferred<Response<Item>>
