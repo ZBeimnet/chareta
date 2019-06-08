@@ -24,7 +24,6 @@ class CreatePostFragment: Fragment() {
         itemname = view.itemname_editext
         itemdescription = view.itemdescription_edittext
         startingprice = view.startingprice_Edittext
-        posteddate = view.post_date_edit_text
         expirydate = view.exipray_date_password_edit_text
         postbtn = view.post_button
         backbtn = view.back_btn

@@ -43,6 +43,7 @@ class PostedItemFragment: Fragment() {
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
 
+        val isConnected = activity?.connected()
 
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
@@ -66,6 +67,7 @@ class PostedItemFragment: Fragment() {
         postedByTextView = view.posted_by_text_view
 
 
+<<<<<<< HEAD
 
 //     itemViewModel.getItemById(5).observe(this, Observer {
 //            val item = it
@@ -74,6 +76,17 @@ class PostedItemFragment: Fragment() {
 //            startingPriceTextView.text = item?.starting_price.toString()
 //            expiryDateTextView.text = item?.expiry_date.toString()
 //        })
+=======
+        if(isConnected!!) {
+            itemViewModel.getItemById(5).observe(this, Observer {
+                val item = it
+                //Log.d("item_Name", item.item_name)
+                itemNameTextView.text = item?.item_name
+                startingPriceTextView.text = item?.starting_price.toString()
+                expiryDateTextView.text = item?.expiry_date.toString()
+            })
+        }
+>>>>>>> 7e151279f256c4bf9f616e627810d2dbf08ed539
 
         return view
     }
