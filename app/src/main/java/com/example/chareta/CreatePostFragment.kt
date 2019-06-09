@@ -20,13 +20,14 @@ import kotlinx.android.synthetic.main.create_post_fragment.view.*
 import java.sql.Date
 
 
-class CreatePostFragment: Fragment() {
+class CreatePostFragment : Fragment() {
     lateinit var itemname: EditText
     lateinit var itemdescription: EditText
     lateinit var startingprice: EditText
     lateinit var posteddate: EditText
     lateinit var backbtn: Button
     lateinit var postbtn: Button
+<<<<<<< HEAD
     lateinit var expirydate:TextView
     lateinit var postdate_btn:Button
     @RequiresApi(Build.VERSION_CODES.O)
@@ -38,6 +39,11 @@ fun clearFields(){
     lateinit var itemViewModel:ItemViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
+=======
+    lateinit var expirydate: TextView
+    lateinit var postdate_btn: Button
+
+>>>>>>> 3ff455dbe7c1bf2e00ec2081659a1bef181f0d92
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
         val activity = activity as MainActivity?
@@ -71,11 +77,18 @@ fun clearFields(){
             }
         }
         postdate_btn.setOnClickListener {
+<<<<<<< HEAD
 
             val dpd =
                 DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
 
+=======
+            val dpd =
+                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
+                    expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
+
+>>>>>>> 3ff455dbe7c1bf2e00ec2081659a1bef181f0d92
                 }, year, month, day)
             dpd.show()
 

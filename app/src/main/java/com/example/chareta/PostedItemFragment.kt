@@ -42,7 +42,7 @@ class PostedItemFragment: Fragment() {
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
 
-        val isConnected = activity?.connected()
+//        val isConnected = activity?.connected()
 
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
@@ -56,6 +56,12 @@ class PostedItemFragment: Fragment() {
             recyclerView.adapter = ItemRecyclerAdapter(it)
         })
 
+//        itemNameTextView = view.item_name_text_view
+//        startingPriceTextView = view.starting_price_text_view
+//        expiryDateTextView = view.expiry_date_text_view
+//        postedByTextView = view.posted_by_text_view
+
+
 
 
 //     itemViewModel.getItemById(5).observe(this, Observer {
@@ -65,6 +71,18 @@ class PostedItemFragment: Fragment() {
 //            startingPriceTextView.text = item?.starting_price.toString()
 //            expiryDateTextView.text = item?.expiry_date.toString()
 //        })
+
+//
+//        if(isConnected!!) {
+//            itemViewModel.getItemById(5).observe(this, Observer {
+//                val item = it
+//                //Log.d("item_Name", item.item_name)
+//                itemNameTextView.text = item?.item_name
+//                startingPriceTextView.text = item?.starting_price.toString()
+//                expiryDateTextView.text = item?.expiry_date.toString()
+//            })
+//        }
+
 //        if(isConnected!!) {
 //            itemViewModel.getItemById(5).observe(this, Observer {
 //                val item = it
@@ -78,7 +96,7 @@ class PostedItemFragment: Fragment() {
 
 
 
-        ////////
+
 
 //        itemNameTextView = view.item_name_text_view
 //        startingPriceTextView = view.starting_price_text_view
