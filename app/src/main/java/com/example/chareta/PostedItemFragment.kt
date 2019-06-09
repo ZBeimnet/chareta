@@ -50,6 +50,7 @@ class PostedItemFragment: Fragment() {
 //        val adapter = ItemRecyclerAdapter()
 //        recyclerView.adapter = adapter
 
+
         val scalarRepository = ScalarRepository()
 
         if(isConnected!!) {
@@ -59,6 +60,7 @@ class PostedItemFragment: Fragment() {
                 recyclerView.adapter = ItemRecyclerAdapter(it, requireActivity())
             })
         }
+
 
 
         return view

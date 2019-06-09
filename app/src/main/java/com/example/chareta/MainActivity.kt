@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), NavigationHost {
 
     private val onNavigationItemSelectedLitsner = BottomNavigationView.OnNavigationItemSelectedListener {
-        when(it.itemId) {
+            when(it.itemId) {
             R.id.bottom_posted -> {
                 navigateTo(PostedItemFragment(), false)
                 return@OnNavigationItemSelectedListener true

@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.create_post_fragment.view.*
 
 
-class CreatePostFragment: Fragment() {
+class CreatePostFragment : Fragment() {
     lateinit var itemname: EditText
     lateinit var itemdescription: EditText
     lateinit var startingprice: EditText
     lateinit var backbtn: Button
     lateinit var postbtn: Button
-    lateinit var expirydate:TextView
-    lateinit var postdate_btn:Button
+    lateinit var expirydate: TextView
+    lateinit var postdate_btn: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
@@ -46,10 +46,11 @@ class CreatePostFragment: Fragment() {
 
         }
         postdate_btn.setOnClickListener {
-            val dpd = DatePickerDialog(requireContext(),DatePickerDialog.OnDateSetListener{view,myear,mmonth,mday->
-                      expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
+            val dpd =
+                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
+                    expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
 
-            },year,month,day)
+                }, year, month, day)
             dpd.show()
 
         }
