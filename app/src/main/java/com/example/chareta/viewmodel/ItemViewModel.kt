@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chareta.data.Item
-import com.example.chareta.data.ItemsEmbedded
+import com.example.chareta.data.ItemsWrapper
 import com.example.chareta.repository.ItemRepository
 import com.example.chareta.webservice.ItemService
 import com.example.chareta.webservice.ServiceBuilder
@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.net.URI
 
 class ItemViewModel(application: Application): AndroidViewModel(application) {
 
@@ -55,7 +56,7 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         //responseBody is null
 
         viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<ItemsEmbedded> = itemRepository.getAllItemsAsync().await()
+            val response: Response<ItemsWrapper> = itemRepository.getAllItemsAsync().await()
             val responseBody = response.body()
             if(responseBody != null) {
                 withContext(Dispatchers.Main) {
@@ -117,6 +118,13 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
             Log.d("item_deleted", response.message())
         }
     }
+
+//    fun addBelongingToItem(contentType: String, uriList: List<URI>, itemId: Long) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val response: Response<Void> = itemRepository.addBelongingToItem(contentType, uriList, itemId).await()
+//            Log.d("relationship_added", response.message())
+//        }
+//    }
 
 
 }

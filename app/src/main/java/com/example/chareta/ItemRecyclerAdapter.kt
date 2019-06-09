@@ -1,19 +1,21 @@
 package com.example.chareta
 
-
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
 
 
-class ItemRecyclerAdapter(private var allItems: List<Item>) :
+class ItemRecyclerAdapter(private var allItems: List<Item>, var parentFragment: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-    private var activity: MainActivity? = null
+    private var activity: MainActivity? = MainActivity()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -36,17 +38,17 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
         holder.expiryDate.text = item.expiry_date
-
         holder.itemView.setOnClickListener {
-            Toast.makeText(activity,"message", Toast.LENGTH_SHORT).show()
+            parentFragment  .beginTransaction()
+                .add(R.id.container, ItemDetailFragment.newInstance(item.id))
+                .commit()
 
-//            (activity as NavigationHost).navigateTo(
-//                ItemDetailFragment.newInstance(item.id),
-//                true
-//            ) // Navigate to the next Fragment
         }
     }
 
+    private fun navigateToItemDetailFragment(itemId: Long) {
+
+    }
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemName: TextView = itemView.findViewById(R.id.item_name_card_tv)
         var startingPrice: TextView = itemView.findViewById(R.id.starting_price_card_tv)
