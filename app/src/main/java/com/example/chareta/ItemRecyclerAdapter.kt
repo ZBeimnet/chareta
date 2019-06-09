@@ -13,8 +13,6 @@ import com.example.chareta.data.Item
 
 class ItemRecyclerAdapter(private var allItems: List<Item>) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-    private lateinit var listener: OnItemDetailClickListener
-
     private lateinit var activity: MainActivity
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -56,7 +54,4 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
 //        var itemDetail: TextView = itemView.findViewById(R.id.item_detail)
     }
 
-    interface OnItemDetailClickListener {
-        fun onItemClick(itemm: Item)
-    }
 }

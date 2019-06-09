@@ -49,7 +49,6 @@ class ItemDetailFragment : Fragment() {
             val args = Bundle()
             args.putLong("itemID",itemID)
             itemDetailFragment.arguments = args
-
             return itemDetailFragment
         }
 
