@@ -3,7 +3,7 @@ package com.example.chareta.data
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class UsersEmbedded (
+data class UsersWrapper (
     @SerializedName("_embedded")
     @Expose
     val embeddedUsers: UserList

@@ -10,9 +10,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
+import com.example.chareta.repository.ScalarRepository
 import com.example.chareta.viewmodel.ItemViewModel
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
+import java.net.URI
 
 @Suppress("PLUGIN_WARNING")
 class PostedItemFragment: Fragment() {
@@ -50,12 +52,15 @@ class PostedItemFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
+        val scalarRepository = ScalarRepository()
 
+        if(isConnected!!) {
+            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
+            itemViewModel.getAllItems().observe(this, Observer {
+                recyclerView.adapter = ItemRecyclerAdapter(it)
+            })
 
-        itemViewModel.getAllItems().observe(this, Observer {
-            recyclerView.adapter = ItemRecyclerAdapter(it)
-        })
-
+        }
 
 
         ////////

@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chareta.data.User
-import com.example.chareta.data.UsersEmbedded
+import com.example.chareta.data.UsersWrapper
 import com.example.chareta.repository.UserRepository
 import com.example.chareta.webservice.ServiceBuilder
 import com.example.chareta.webservice.UserService
@@ -29,7 +29,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         val allUsers: MutableLiveData<List<User>> = MutableLiveData()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<UsersEmbedded> = userRepository.getAllUsersAsync().await()
+            val response: Response<UsersWrapper> = userRepository.getAllUsersAsync().await()
             val responseBody = response.body()
             if(responseBody != null) {
                 withContext(Dispatchers.Main) {
