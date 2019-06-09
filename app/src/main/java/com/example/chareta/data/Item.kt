@@ -2,7 +2,9 @@ package com.example.chareta.data
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
+
+import java.sql.Date
+
 
 data class Item (
     @SerializedName("id")
@@ -23,9 +25,9 @@ data class Item (
 
     @SerializedName("post_date")
     @Expose
-    val post_date: Date,
+    val post_date: String,
 
     @SerializedName("expiry_date")
     @Expose
-    val expiry_date: Date
+    val expiry_date: String
 )
