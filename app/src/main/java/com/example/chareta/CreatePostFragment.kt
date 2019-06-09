@@ -38,11 +38,10 @@ fun clearFields(){
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 2ea5872b183d986a6064f6dfc64fff88eaa4dde2
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
         val activity = activity as MainActivity?
@@ -78,7 +77,7 @@ fun clearFields(){
         postdate_btn.setOnClickListener {
 
 
-<<<<<<< HEAD
+
             val dpd =
                 DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
@@ -87,8 +86,7 @@ fun clearFields(){
 
 
 
-=======
->>>>>>> 2ea5872b183d986a6064f6dfc64fff88eaa4dde2
+
                 }, year, month, day)
             dpd.show()
 

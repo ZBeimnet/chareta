@@ -2,7 +2,7 @@ package com.example.chareta.data
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-<<<<<<< HEAD
+
 
 
 import java.sql.Date
@@ -10,8 +10,7 @@ import java.sql.Date
 import java.io.Serializable
 import java.util.*
 
-=======
->>>>>>> 2ea5872b183d986a6064f6dfc64fff88eaa4dde2
+
 
 data class Item (
     @SerializedName("id")
