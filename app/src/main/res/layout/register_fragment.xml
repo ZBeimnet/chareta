@@ -24,7 +24,8 @@
                 android:layout_marginBottom="40dp"
                 android:text="@string/register_form"
                 android:textAllCaps="true"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+        android:layout_marginTop="30dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

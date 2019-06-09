@@ -1,3 +1,5 @@
+
+
 package com.example.chareta.data
 
 data class User (
@@ -6,4 +8,5 @@ data class User (
     val phone_number: String,
     val address: String,
     val password: String
+
 )

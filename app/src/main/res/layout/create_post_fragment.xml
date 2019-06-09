@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/post_item"
                 android:textAllCaps="true"
                 android:textSize="20sp" />
@@ -77,18 +77,31 @@
                     android:maxLines="1" android:id="@+id/startingprice_Edittext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/confirm_password_text_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/expiry_date">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/exipray_date_password_edit_text"
-                    android:layout_width="match_parent"
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pickdate_btn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+
+                    android:text="@string/pick_date" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="100dp"
+                    android:text="Date"
+                    android:id="@+id/expiry_date_textview"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+        </LinearLayout>
+
+
 
         <RelativeLayout
                 android:layout_width="match_parent"

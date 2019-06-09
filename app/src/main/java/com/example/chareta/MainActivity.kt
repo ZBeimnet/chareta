@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
     }
 
     override fun navigateTo(fragment: Fragment, addToBackstack: Boolean) {
+
         val transaction = supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         transaction.commit()
     }
 
-    public fun connected():Boolean {
+    fun connected():Boolean {
 
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager

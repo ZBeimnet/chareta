@@ -24,10 +24,6 @@ class PostedItemFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var allItems: List<Item>
-    private lateinit var itemNameTextView: TextView
-    private lateinit var startingPriceTextView: TextView
-    private lateinit var postedByTextView: TextView
-    private lateinit var expiryDateTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,45 +47,19 @@ class PostedItemFragment: Fragment() {
         recyclerView = view.recycler_view
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
+//        val adapter = ItemRecyclerAdapter()
+//        recyclerView.adapter = adapter
 
         val scalarRepository = ScalarRepository()
 
         if(isConnected!!) {
-            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
+//            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
             itemViewModel.getAllItems().observe(this, Observer {
-                recyclerView.adapter = ItemRecyclerAdapter(it)
+//                adapter.setData(it)
+                recyclerView.adapter = ItemRecyclerAdapter(it, requireActivity())
             })
-
         }
 
-
-        ////////
-
-//        itemNameTextView = view.item_name_text_view
-//        startingPriceTextView = view.starting_price_text_view
-//        postedByTextView = view.posted_by_text_view
-//        expiryDateTextView = view.expiry_date_text_view
-
-
-//        if(isConnected!!) {
-//            itemViewModel.getAllItems().observe(this, Observer {
-//                val item = it?.get(0)
-//                //Log.d("item_Name", item.item_name)
-//                itemNameTextView.text = item?.item_name
-//                startingPriceTextView.text = item?.starting_price.toString()
-//                expiryDateTextView.text = item?.expiry_date.toString()
-//            })
-//        }
-
-//        if(isConnected!!) {
-//            userViewModel.getAllUsers().observe(this, Observer {
-//                val item = it?.get(0)
-//                //Log.d("item_Name", item.item_name)
-//                itemNameTextView.text = item?.user_name
-//                startingPriceTextView.text = item?.phone_number
-//                expiryDateTextView.text = item?.address
-//            })
-//        }
 
         return view
     }
