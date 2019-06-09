@@ -1,6 +1,7 @@
 package com.example.chareta
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
     }
 
     override fun getItemCount(): Int {
+        Log.d("Recycler View Adapter", allItems.size.toString())
         return allItems.size
     }
     fun setData(newItem: List<Item>) {

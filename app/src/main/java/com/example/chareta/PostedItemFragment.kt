@@ -1,6 +1,7 @@
 package com.example.chareta
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -50,11 +51,12 @@ class PostedItemFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
-
+Log.i("hello there", "Hello There")
 
         itemViewModel.getAllItems().observe(this, Observer {
             recyclerView.adapter = ItemRecyclerAdapter(it)
         })
+        Log.i("hello there", "Not working?????")
 
 //        itemNameTextView = view.item_name_text_view
 //        startingPriceTextView = view.starting_price_text_view
