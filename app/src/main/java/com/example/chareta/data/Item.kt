@@ -29,4 +29,4 @@ data class Item (
     @SerializedName("expiry_date")
     @Expose
     val expiry_date: Date
-):Serializable
+)

@@ -19,7 +19,6 @@ class ItemDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +37,7 @@ class ItemDetailFragment : Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
-
-
-
     companion object {
-
-
         fun newInstance(itemID: Long): ItemDetailFragment {
             val itemDetailFragment = ItemDetailFragment()
             val args = Bundle()
