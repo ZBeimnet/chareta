@@ -1,16 +1,15 @@
 package com.example.chareta
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
 
 
-class ItemRecyclerAdapter(private var allItems: List<Item>, var context: Context) :
+class ItemRecyclerAdapter(private var allItems: List<Item>, var fm: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
     private var activity: MainActivity? = MainActivity()
 
@@ -37,27 +36,18 @@ class ItemRecyclerAdapter(private var allItems: List<Item>, var context: Context
         holder.expiryDate.text = item.expiry_date
 
         holder.itemView.setOnClickListener {
-            View.OnClickListener {
-               // navigateToItemDetailFragment(item.id)
-                Toast.makeText(activity, item.id.toString(), Toast.LENGTH_SHORT).show()
-            }
-
+              fm.beginTransaction()
+                .replace(R.id.container, ItemDetailFragment.newInstance(allItems[position].id))
+                .addToBackStack(null)
+                .commit()
         }
     }
-
-    private fun navigateToItemDetailFragment(itemId: Long) {
-
-    }
-
-
-
 
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemName: TextView = itemView.findViewById(R.id.item_name_card_tv)
         var startingPrice: TextView = itemView.findViewById(R.id.starting_price_card_tv)
         var expiryDate: TextView = itemView.findViewById(R.id.expiry_date_card_tv)
-
     }
 
 }

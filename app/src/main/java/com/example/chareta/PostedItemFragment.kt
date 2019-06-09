@@ -57,7 +57,7 @@ class PostedItemFragment: Fragment() {
 //            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
             itemViewModel.getAllItems().observe(this, Observer {
 //                adapter.setData(it)
-                recyclerView.adapter = ItemRecyclerAdapter(it, requireActivity())
+                recyclerView.adapter = ItemRecyclerAdapter(it, activity!!.supportFragmentManager)
             })
         }
 
