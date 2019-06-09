@@ -5,19 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
-import java.text.SimpleDateFormat
 
 
 class ItemRecyclerAdapter(private var allItems: List<Item>) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-    private lateinit var activity: MainActivity
-    private lateinit var listener: OnItemClickListener
+    private var activity: MainActivity? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,7 +24,6 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
     override fun getItemCount(): Int {
         return allItems.size
     }
-
     fun setData(newItem: List<Item>) {
         this.allItems = newItem
         notifyDataSetChanged()
@@ -39,17 +33,15 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
         val item = allItems[position]
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
-        holder.expiryDate.text = item.expiry_date.toString()
-        holder.bind(with(allItems) { get(position) }, listener)
-
-
-
+        holder.expiryDate.text = item.expiry_date
 
         holder.itemView.setOnClickListener {
-            (activity as NavigationHost).navigateTo(
-                ItemDetailFragment.newInstance(item.id),
-                true
-            ) // Navigate to the next Fragment
+            Toast.makeText(activity,"message", Toast.LENGTH_SHORT).show()
+
+//            (activity as NavigationHost).navigateTo(
+//                ItemDetailFragment.newInstance(item.id),
+//                true
+//            ) // Navigate to the next Fragment
         }
     }
 
@@ -58,25 +50,6 @@ class ItemRecyclerAdapter(private var allItems: List<Item>) :
         var startingPrice: TextView = itemView.findViewById(R.id.starting_price_card_tv)
         var expiryDate: TextView = itemView.findViewById(R.id.expiry_date_card_tv)
 
-        fun bind(item: Item, listener: OnItemClickListener) {
-
-            itemView.setOnClickListener {
-                listener.onItemClick(item)
-                var fragmentManager: FragmentManager? = null
-
-                fragmentManager?.beginTransaction()
-                    ?.replace(R.id.container, ItemDetailFragment())
-                    ?.commit()
-
-
-            }
-        }
-
     }
-
-    interface OnItemClickListener {
-        fun onItemClick(item: Item)
-    }
-
 
 }
