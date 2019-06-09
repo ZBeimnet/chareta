@@ -1,5 +1,7 @@
 package com.example.chareta
 
+
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.data.Item
 
 
-class ItemRecyclerAdapter(private var allItems: List<Item>, var fm: FragmentManager) :
+class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-    private var activity: MainActivity? = MainActivity()
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,6 +21,7 @@ class ItemRecyclerAdapter(private var allItems: List<Item>, var fm: FragmentMana
     }
 
     override fun getItemCount(): Int {
+        Log.d("Recycler View Adapter", allItems.size.toString())
         return allItems.size
     }
     fun setData(newItem: List<Item>) {
@@ -32,9 +33,7 @@ class ItemRecyclerAdapter(private var allItems: List<Item>, var fm: FragmentMana
         val item = allItems[position]
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
-
         holder.expiryDate.text = item.expiry_date
-
         holder.itemView.setOnClickListener {
               fm.beginTransaction()
                 .replace(R.id.container, ItemDetailFragment.newInstance(allItems[position].id))

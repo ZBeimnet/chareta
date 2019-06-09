@@ -67,7 +67,7 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         }
 
 
-
+        Log.i("GET ALL ITEMS", "ALL ITEMS$allItems")
         return allItems
 
     }
