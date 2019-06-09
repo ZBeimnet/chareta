@@ -2,29 +2,28 @@ package com.example.chareta
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.core.text.parseAsHtml
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.data.Item
 import com.example.chareta.viewmodel.ItemViewModel
 
 import kotlinx.android.synthetic.main.create_post_fragment.view.*
-import java.sql.Date
 
 
 class CreatePostFragment : Fragment() {
     lateinit var itemname: EditText
     lateinit var itemdescription: EditText
     lateinit var startingprice: EditText
-    lateinit var posteddate: EditText
     lateinit var backbtn: Button
     lateinit var postbtn: Button
     lateinit var expirydate:TextView
@@ -39,8 +38,11 @@ fun clearFields(){
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2ea5872b183d986a6064f6dfc64fff88eaa4dde2
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
         val activity = activity as MainActivity?
@@ -76,6 +78,7 @@ fun clearFields(){
         postdate_btn.setOnClickListener {
 
 
+<<<<<<< HEAD
             val dpd =
                 DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
@@ -84,6 +87,8 @@ fun clearFields(){
 
 
 
+=======
+>>>>>>> 2ea5872b183d986a6064f6dfc64fff88eaa4dde2
                 }, year, month, day)
             dpd.show()
 
