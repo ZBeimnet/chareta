@@ -8,6 +8,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.chareta.view.*
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,6 +45,9 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -53,6 +60,11 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         hideBottomBar(false)
 
 
+    }
+    //bottom navigation setup
+    fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav?.setupWithNavController(navController)
     }
 
     fun hideBottomBar(isHidden: Boolean) {
