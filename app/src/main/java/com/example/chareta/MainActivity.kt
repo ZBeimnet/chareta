@@ -8,6 +8,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,16 +40,14 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         false
     }
 
-    private fun setupBottomNavMenu(navController: NavController) {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-        bottomNav?.setupWithNavController(navController)
-    }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
 
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -59,6 +61,11 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         hideBottomBar(false)
 
 
+    }
+    //bottom navigation setup
+    fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav?.setupWithNavController(navController)
     }
 
     fun hideBottomBar(isHidden: Boolean) {
@@ -87,6 +94,5 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         return networkInfo != null && networkInfo.isConnected
 
     }
-
 
 }
