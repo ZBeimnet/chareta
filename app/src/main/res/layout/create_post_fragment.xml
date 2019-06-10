@@ -98,10 +98,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/ex_date"
+            android:text="@string/expiry_date"
             android:id="@+id/expiry_date_textview"
             android:textAllCaps="true"
-            android:textSize="24sp" android:layout_marginTop="328dp" android:layout_marginLeft="152dp"
+            android:textSize="20sp" android:layout_marginTop="328dp" android:layout_marginLeft="152dp"
             android:layout_marginStart="152dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.0"/>
 
@@ -113,20 +113,18 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/post_button"
-            android:layout_toLeftOf="@id/post_button"
+
             android:text="@string/button_back"
-            android:layout_marginTop="432dp" android:layout_marginLeft="88dp" android:layout_marginStart="88dp"/>
+            android:layout_marginTop="432dp" android:layout_marginLeft="30dp" android:layout_marginStart="30dp"/>
     <com.google.android.material.button.MaterialButton
             android:id="@+id/post_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+
             android:text="@string/post_btn"
-            android:layout_marginTop="432dp" android:layout_marginLeft="220dp" android:layout_marginStart="220dp"/>
+            android:layout_marginTop="432dp" android:layout_marginLeft="190dp" android:layout_marginStart="190dp"/>
 
 
 
