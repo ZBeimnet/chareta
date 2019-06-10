@@ -18,7 +18,7 @@
     <string name="item_description">Item Description</string>
     <string name="starting_price">Starting Price</string>
     <string name="posted_by">Posted By</string>
-    <string name="expiry_date">Expiry Date</string>
+    <string name="expiry_date">expired Date</string>
     <string name="post_item">Post Item</string>
 
     <string name="registration_confirmation">Successfully Registered!</string>
@@ -29,5 +29,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="item_details">Item Detail</string>
+    <string name="item_names">Item Name</string>
+    <string name="item_descritption">Item description</string>
+    <string name="place_bid">Place a Bid</string>
+    <string name="placebid">Place Bid</string>
+
 
 </resources>

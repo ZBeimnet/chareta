@@ -30,7 +30,8 @@ class StatusFragment: Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
+            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true)
+            R.id.logout -> (activity as NavigationHost).navigateTo(com.example.chareta.LoginFragment(), true)// Navigate to the next Fragment
         }
 
         return super.onOptionsItemSelected(item)

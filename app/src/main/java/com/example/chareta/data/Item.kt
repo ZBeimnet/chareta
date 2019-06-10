@@ -3,6 +3,15 @@ package com.example.chareta.data
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+
+
+import java.sql.Date
+
+import java.io.Serializable
+import java.util.*
+
+
+
 data class Item (
     @SerializedName("id")
     @Expose

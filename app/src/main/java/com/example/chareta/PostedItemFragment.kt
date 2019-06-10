@@ -74,6 +74,7 @@ class PostedItemFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
+            R.id.logout -> (activity as NavigationHost).navigateTo(com.example.chareta.LoginFragment(), true)
         }
 
         return super.onOptionsItemSelected(item)
