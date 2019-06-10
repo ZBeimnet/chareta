@@ -16,7 +16,8 @@ class LoginFragment: Fragment() {
         activity?.hideBottomBar(true)
 
         view.login_button.setOnClickListener {
-            (activity as NavigationHost).navigateTo(PostedItemFragment(), false) // Navigate to the next Fragment
+            (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
+
         }
 
         view.click_here.setOnClickListener {

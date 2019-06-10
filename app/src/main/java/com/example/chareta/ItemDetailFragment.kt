@@ -27,7 +27,7 @@ class ItemDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_item_detail, container, false)
 
-        itemDetail = view.item_detail
+       itemDetail = view.item_detail
         itemDetail.text = arguments?.getLong("itemID", -2).toString()
 
         return view

@@ -64,6 +64,8 @@ fun clearFields(){
 
         backbtn.setOnClickListener {
             (activity as NavigationHost).navigateTo(PostedItemFragment(), true)
+
+
         }
         postbtn.setOnClickListener {
 
