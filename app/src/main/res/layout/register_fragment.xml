@@ -112,10 +112,9 @@
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/button_register" android:layout_marginTop="416dp" android:layout_marginLeft="228dp"
-            android:layout_marginStart="228dp"/>
+
+            android:text="@string/button_register" android:layout_marginTop="416dp" android:layout_marginLeft="190dp"
+            android:layout_marginStart="190dp"/>
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/back_button"
@@ -124,10 +123,9 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/register_button"
-            android:layout_toLeftOf="@id/register_button"
-            android:text="@string/button_back" android:layout_marginTop="416dp" android:layout_marginLeft="108dp"
-            android:layout_marginStart="108dp"/>
+
+            android:text="@string/button_back" android:layout_marginTop="416dp" android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"/>
 
 
 
