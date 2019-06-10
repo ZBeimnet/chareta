@@ -7,53 +7,47 @@
                                                    tools:context=".ItemDetailFragment">
 
 
-<LinearLayout android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-android:orientation="vertical"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent">
-
     <TextView
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Item Detail"
+            android:text="@string/item_details"
             android:textSize="24sp"
     />
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          android:id="@+id/itemname_textview"
+            android:id="@+id/itemname_textview"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:hint="Item Name"
+            android:hint="@string/item_names"
             android:textSize="24sp"
-    />
+            android:layout_marginTop="56dp"/>
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:hint="Item description"
+            android:hint="@string/item_descritption"
 
             android:textSize="24sp"
             android:inputType="textMultiLine"
             android:id="@+id/item_detail"
-    />
+            android:layout_marginTop="108dp"/>
     <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="200dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Place a Bid">
+            android:hint="@string/place_bid">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -64,30 +58,24 @@ app:layout_constraintTop_toTopOf="parent">
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/Bid_btn"
+            android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="20dp">
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/placebid"
+            android:layout_marginTop="304dp" android:layout_marginLeft="44dp" android:layout_marginStart="44dp"/>
 
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/Bid_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:text="Place Bid"
-                android:layout_marginRight="35dp" android:layout_marginEnd="45dp"/>
-
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancel_btn"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_marginLeft="80dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button_back"/>
-
-    </RelativeLayout>
-</LinearLayout>
+    <com.google.android.material.button.MaterialButton
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/cancel_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_marginLeft="204dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_back" android:layout_marginTop="304dp" android:layout_marginStart="204dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

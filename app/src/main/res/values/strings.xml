@@ -30,5 +30,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">Logout</string>
+    <string name="item_details">Item Detail</string>
+    <string name="item_names">Item Name</string>
+    <string name="item_descritption">Item description</string>
+    <string name="place_bid">Place a Bid</string>
+    <string name="placebid">Place Bid</string>
+    <string name="ex_date">ExpiryDate</string>
 
 </resources>
