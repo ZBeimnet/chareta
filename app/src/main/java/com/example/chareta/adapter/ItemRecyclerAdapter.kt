@@ -1,4 +1,4 @@
-package com.example.chareta
+package com.example.chareta.adapter
 
 
 import android.util.Log
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chareta.R
 import com.example.chareta.data.remote.model.Item
-import com.example.chareta.fragments.ItemDetailFragment
+import com.example.chareta.view.ItemDetailFragment
 
 
 class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: FragmentManager) :
@@ -35,6 +36,7 @@ class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: Frag
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
         holder.expiryDate.text = item.expiry_date
+
         holder.itemView.setOnClickListener {
               fm.beginTransaction()
                 .replace(R.id.container, ItemDetailFragment.newInstance(allItems[position].id))

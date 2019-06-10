@@ -1,7 +1,7 @@
 package com.example.chareta.repository
 
 import android.util.Log
-import com.example.chareta.webservice.ScalarService
+import com.example.chareta.data.remote.webservice.ScalarService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.net.URI
 
 class ScalarRepository {
 

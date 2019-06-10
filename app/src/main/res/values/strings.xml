@@ -30,5 +30,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">Logout</string>
+    <string name="edit_button">Edit</string>
+    <string name="withdraw_button">Withdraw</string>
+    <string name="see_bids">Bids</string>
 
 </resources>

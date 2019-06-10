@@ -1,4 +1,4 @@
-package com.example.chareta.model
+package com.example.chareta.data.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

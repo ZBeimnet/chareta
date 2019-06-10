@@ -6,16 +6,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.chareta.data.Item
-import com.example.chareta.data.ItemsWrapper
+import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.remote.model.ItemsWrapper
 import com.example.chareta.repository.ItemRepository
-import com.example.chareta.webservice.ItemService
-import com.example.chareta.webservice.ServiceBuilder
+import com.example.chareta.data.remote.webservice.ItemService
+import com.example.chareta.data.remote.webservice.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import java.net.URI
 
 class ItemViewModel(application: Application): AndroidViewModel(application) {
 
@@ -28,32 +27,6 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
 
     fun getAllItems(): LiveData<List<Item>> {
         val allItems: MutableLiveData<List<Item>> = MutableLiveData()
-
-//        viewModelScope.launch(Dispatchers.IO) {
-//
-//            val call = itemRepository.getAllItemsAsync()
-//            call.enqueue(object: Callback<ItemList> {
-//                override fun onFailure(call: Call<ItemList>, t: Throwable) {
-//                    Log.d("isFailed", t.message)
-//                }
-//
-//                override fun onResponse(call: Call<ItemList>, response: Response<ItemList>) {
-//                    allItems.value = response.body()?.itemLists
-//                    //Log.d("worked", allItems.value!!.itemLists[0].item_name)
-//                }
-//
-//            })
-//        }
-
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val a = itemRepository.getAllItemsAsync().execute()
-//            withContext(Dispatchers.Main) {
-//                allItems.value = a.body()!!.itemLists
-//            }
-//
-//        }
-
-        //responseBody is null
 
         viewModelScope.launch(Dispatchers.IO) {
             val response: Response<ItemsWrapper> = itemRepository.getAllItemsAsync().await()
@@ -75,21 +48,6 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     fun getItemById(id: Long): LiveData<Item> {
         val item: MutableLiveData<Item> = MutableLiveData()
 
-//        viewModelScope.launch(Dispatchers.IO) {
-//
-//            val call = itemRepository.getItemByIdAsync(id)
-//
-//            call.enqueue(object: Callback<Item> {
-//                override fun onFailure(call: Call<Item>, t: Throwable) {
-//                    Log.d("isFailed", t.message)
-//                }
-//
-//                override fun onResponse(call: Call<Item>, response: Response<Item>) {
-//                    item.value = response.body()
-//                }
-//
-//            })
-//        }
 
         viewModelScope.launch(Dispatchers.IO) {
             val response: Response<Item> = itemRepository.getItemByIdAsync(id).await()
@@ -119,12 +77,24 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-//    fun addBelongingToItem(contentType: String, uriList: List<URI>, itemId: Long) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val response: Response<Void> = itemRepository.addBelongingToItem(contentType, uriList, itemId).await()
-//            Log.d("relationship_added", response.message())
-//        }
-//    }
+    fun getItemsByUserId(userId: Long): LiveData<List<Item>> {
+        val allItems: MutableLiveData<List<Item>> = MutableLiveData()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val response: Response<ItemsWrapper> = itemRepository.getItemsByUserId(userId).await()
+            val responseBody = response.body()
+            if(responseBody != null) {
+                withContext(Dispatchers.Main) {
+                    allItems.value = responseBody.embeddedItems.allItems
+                }
+            }
+
+        }
+
+        Log.i("GET ALL ITEMS", "ALL ITEMS$allItems")
+        return allItems
+
+    }
 
 
 }

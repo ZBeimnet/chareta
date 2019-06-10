@@ -1,11 +1,18 @@
-package com.example.chareta.model
+package com.example.chareta.data.remote.model
 
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
 data class Bid (
 
-    private val id: Long,
-    private val bid_amount: Long,
-    private val bid_date: Date
+    @SerializedName("id")
+    val id: Long,
 
-)
+    @SerializedName("bid_amount")
+    val bid_amount: Long,
+
+    @SerializedName("bid_date")
+    val bid_date: Date
+
+): Serializable

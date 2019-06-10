@@ -4,7 +4,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".PostedItemFragment">
+             tools:context=".view.PostedItemFragment">
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -19,12 +19,11 @@
                 app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_manage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="100dp"
-            android:textColor="#FD9725"
-            android:text="Your Posts Fragmnet"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            android:scrollbars="vertical"/>
 
 </FrameLayout>

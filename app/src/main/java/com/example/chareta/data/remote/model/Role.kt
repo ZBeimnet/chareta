@@ -1,6 +1,13 @@
-package com.example.chareta.model
+package com.example.chareta.data.remote.model
+
+import com.google.gson.annotations.SerializedName
 
 data class Role (
-    private val id: Long,
-    private val role: String
+
+    @SerializedName("id")
+    val id: Long,
+
+    @SerializedName("role")
+    val role: String
+
 )

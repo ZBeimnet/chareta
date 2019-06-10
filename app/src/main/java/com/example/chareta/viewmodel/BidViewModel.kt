@@ -5,10 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.chareta.data.Bid
+import com.example.chareta.data.remote.model.Bid
 import com.example.chareta.repository.BidRepository
-import com.example.chareta.webservice.BidService
-import com.example.chareta.webservice.ServiceBuilder
+import com.example.chareta.data.remote.webservice.BidService
+import com.example.chareta.data.remote.webservice.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

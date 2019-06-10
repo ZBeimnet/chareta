@@ -1,4 +1,4 @@
-package com.example.chareta.webservice
+package com.example.chareta.data.remote.webservice
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response

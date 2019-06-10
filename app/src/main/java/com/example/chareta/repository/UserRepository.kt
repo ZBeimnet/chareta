@@ -1,8 +1,8 @@
 package com.example.chareta.repository
 
-import com.example.chareta.data.User
-import com.example.chareta.data.UsersWrapper
-import com.example.chareta.webservice.UserService
+import com.example.chareta.data.remote.model.User
+import com.example.chareta.data.remote.model.UsersWrapper
+import com.example.chareta.data.remote.webservice.UserService
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 

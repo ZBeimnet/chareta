@@ -2,11 +2,24 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ItemDetailFragment">
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".view.ItemDetailFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_bar"
+                style="@style/Widget.Chareta.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@android:color/white"
+                app:title="@string/app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
+            android:layout_marginTop="70dp"
             android:id="@+id/item_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

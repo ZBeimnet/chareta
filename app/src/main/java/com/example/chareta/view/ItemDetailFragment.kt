@@ -1,4 +1,4 @@
-package com.example.chareta.fragments
+package com.example.chareta.view
 
 import android.net.Uri
 import android.os.Bundle
