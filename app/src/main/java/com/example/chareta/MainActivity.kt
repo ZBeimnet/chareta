@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         false
     }
 
+    private fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        bottomNav?.setupWithNavController(navController)
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,5 +87,6 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         return networkInfo != null && networkInfo.isConnected
 
     }
+
 
 }
