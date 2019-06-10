@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_item_detail.view.*
 
@@ -15,7 +16,9 @@ class ItemDetailFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     private lateinit var itemDetail: TextView
-
+    lateinit var itemname:TextView
+    lateinit var bidbtn:Button
+    lateinit var backbtn:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,10 +29,18 @@ class ItemDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_item_detail, container, false)
+       itemname = view.itemname_textview
 
        itemDetail = view.item_detail
+        bidbtn = view.Bid_btn
+        backbtn = view.cancel_btn
         itemDetail.text = arguments?.getLong("itemID", -2).toString()
+         backbtn.setOnClickListener {
+             (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
+         }
+        bidbtn.setOnClickListener {
 
+        }
         return view
     }
 
