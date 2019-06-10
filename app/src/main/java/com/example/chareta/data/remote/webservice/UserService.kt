@@ -1,7 +1,7 @@
 package com.example.chareta.webservice
 
-import com.example.chareta.data.User
-import com.example.chareta.data.UsersWrapper
+import com.example.chareta.model.User
+import com.example.chareta.model.UsersWrapper
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*

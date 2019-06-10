@@ -1,4 +1,4 @@
-package com.example.chareta.data
+package com.example.chareta.model
 
 import java.util.*
 

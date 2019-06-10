@@ -1,10 +1,12 @@
-package com.example.chareta
+package com.example.chareta.fragments
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 
 class YourBidsFragment: Fragment() {
@@ -34,7 +36,7 @@ class YourBidsFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true)
-            R.id.logout -> (activity as NavigationHost).navigateTo(com.example.chareta.LoginFragment(), true)// Navigate to the next Fragment
+            R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)// Navigate to the next Fragment
         }
 
         return super.onOptionsItemSelected(item)

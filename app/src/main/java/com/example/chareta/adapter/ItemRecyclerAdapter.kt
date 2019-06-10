@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chareta.data.Item
+import com.example.chareta.data.remote.model.Item
+import com.example.chareta.fragments.ItemDetailFragment
 
 
 class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: FragmentManager) :

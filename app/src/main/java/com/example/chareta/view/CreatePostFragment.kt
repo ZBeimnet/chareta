@@ -1,4 +1,4 @@
-package com.example.chareta
+package com.example.chareta.fragments
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -14,9 +14,11 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.chareta.data.Item
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
+import com.example.chareta.data.remote.model.Item
 import com.example.chareta.viewmodel.ItemViewModel
-
 import kotlinx.android.synthetic.main.create_post_fragment.view.*
 
 
@@ -37,10 +39,6 @@ fun clearFields(){
     lateinit var itemViewModel:ItemViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
-
-
-
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
@@ -66,8 +64,6 @@ fun clearFields(){
             (activity as NavigationHost).navigateTo(PostedItemFragment(), true)
         }
         postbtn.setOnClickListener {
-
-
             if (isConnected!!) {
                 itemViewModel.addItem(readFields())
                 clearFields()
@@ -76,16 +72,9 @@ fun clearFields(){
         }
         postdate_btn.setOnClickListener {
 
-
-
             val dpd =
                 DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
-
-
-
-
-
 
                 }, year, month, day)
             dpd.show()
@@ -94,8 +83,7 @@ fun clearFields(){
         return view
     }
 
-
-        fun readFields()= Item(0,itemname.text.toString(),
+        fun readFields()= Item(0, itemname.text.toString(),
             itemdescription.text.toString(),
             startingprice.text.toString().toLong(),
             java.util.Date().toString(),

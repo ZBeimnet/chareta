@@ -1,4 +1,4 @@
-package com.example.chareta
+package com.example.chareta.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,10 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.chareta.data.User
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
+import com.example.chareta.data.remote.model.User
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
 

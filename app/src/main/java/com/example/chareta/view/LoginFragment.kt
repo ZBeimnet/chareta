@@ -1,10 +1,13 @@
-package com.example.chareta
+package com.example.chareta.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
 import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class LoginFragment: Fragment() {

@@ -1,4 +1,4 @@
-package com.example.chareta.data
+package com.example.chareta.model
 
 data class Role (
     private val id: Long,

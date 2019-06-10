@@ -1,6 +1,6 @@
 
 
-package com.example.chareta.data
+package com.example.chareta.model
 
 data class User (
     val id: Long,

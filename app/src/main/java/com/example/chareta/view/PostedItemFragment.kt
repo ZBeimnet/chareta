@@ -1,21 +1,22 @@
-package com.example.chareta
+package com.example.chareta.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chareta.data.Item
+import com.example.chareta.adapter.ItemRecyclerAdapter
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
+import com.example.chareta.data.remote.model.Item
 import com.example.chareta.repository.ScalarRepository
 import com.example.chareta.viewmodel.ItemViewModel
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
-import java.net.URI
 
 @Suppress("PLUGIN_WARNING")
 class PostedItemFragment: Fragment() {
@@ -58,13 +59,12 @@ class PostedItemFragment: Fragment() {
 //            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
             itemViewModel.getAllItems().observe(this, Observer {
 //                adapter.setData(it)
-                recyclerView.adapter = ItemRecyclerAdapter(it, activity!!.supportFragmentManager)
+                recyclerView.adapter =
+                    ItemRecyclerAdapter(it, activity!!.supportFragmentManager)
             })
         }
 
-
-
-        return view
+      return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -74,7 +74,7 @@ class PostedItemFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
-            R.id.logout -> (activity as NavigationHost).navigateTo(com.example.chareta.LoginFragment(), true)
+            R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)
         }
 
         return super.onOptionsItemSelected(item)
