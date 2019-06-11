@@ -1,18 +1,18 @@
-package com.example.chareta.data
+package com.example.chareta.data.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class UsersEmbedded (
+data class ItemsWrapper (
     @SerializedName("_embedded")
     @Expose
-    val embeddedUsers: UserList
+    val embeddedItems: ItemList
 ) {
 
-    data class UserList(
+    data class ItemList(
         @SerializedName("items")
         @Expose
-        val allUsers: List<User>
+        val allItems: List<Item>
     )
 
 }

@@ -1,10 +1,13 @@
-package com.example.chareta
+package com.example.chareta.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.chareta.MainActivity
+import com.example.chareta.NavigationHost
+import com.example.chareta.R
 import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class LoginFragment: Fragment() {
@@ -16,7 +19,8 @@ class LoginFragment: Fragment() {
         activity?.hideBottomBar(true)
 
         view.login_button.setOnClickListener {
-            (activity as NavigationHost).navigateTo(PostedItemFragment(), false) // Navigate to the next Fragment
+            (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
+
         }
 
         view.click_here.setOnClickListener {

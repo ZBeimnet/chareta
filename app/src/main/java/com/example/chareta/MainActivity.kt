@@ -6,16 +6,19 @@ import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.chareta.view.*
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationHost {
 
     private val onNavigationItemSelectedLitsner = BottomNavigationView.OnNavigationItemSelectedListener {
-        when(it.itemId) {
+            when(it.itemId) {
             R.id.bottom_posted -> {
                 navigateTo(PostedItemFragment(), false)
                 return@OnNavigationItemSelectedListener true
@@ -42,6 +45,9 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -55,12 +61,18 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 
 
     }
+    //bottom navigation setup
+    fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav?.setupWithNavController(navController)
+    }
 
     fun hideBottomBar(isHidden: Boolean) {
         bottom_navigation.visibility = if (isHidden) View.GONE else View.VISIBLE
     }
 
     override fun navigateTo(fragment: Fragment, addToBackstack: Boolean) {
+
         val transaction = supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)
@@ -72,7 +84,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         transaction.commit()
     }
 
-    public fun connected():Boolean {
+    fun connected():Boolean {
 
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager

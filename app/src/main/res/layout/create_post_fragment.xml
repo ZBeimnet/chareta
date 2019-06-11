@@ -5,7 +5,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:background="@color/loginPageBackgroundColor"
-                                                   tools:context=".CreatePostFragment">
+                                                   tools:context=".view.CreatePostFragment">
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -19,30 +19,31 @@
                 app:titleTextColor="@android:color/white"
                 app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:paddingTop="16dp">
+
 
 
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+<<<<<<< HEAD
                 android:layout_marginTop="40dp"
+=======
+                android:layout_marginTop="60dp"
+>>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879
                 android:text="@string/post_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
                 android:textAllCaps="true"
                 android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="110dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/item_name">
 
@@ -55,6 +56,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="170dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/item_description">
@@ -67,6 +71,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="230dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/starting_price">
@@ -79,43 +86,52 @@
                     android:id="@+id/startingprice_Edittext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/confirm_password_text_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/expiry_date">
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/exipray_date_password_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/pickdate_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-           <com.google.android.material.button.MaterialButton
+            android:text="@string/pick_date"
+            android:layout_marginTop="324dp" android:layout_marginLeft="12dp" android:layout_marginStart="12dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/expiry_date"
+            android:id="@+id/expiry_date_textview"
+            android:textAllCaps="true"
+            android:textSize="20sp" android:layout_marginTop="328dp" android:layout_marginLeft="152dp"
+            android:layout_marginStart="152dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.0"/>
+
+
+    <com.google.android.material.button.MaterialButton
             android:id="@+id/back_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_toStartOf="@id/post_button"
-            android:layout_toLeftOf="@id/post_button"
-            android:text="@string/button_back" />
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/post_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/post_btn" />
+
+            android:text="@string/button_back"
+            android:layout_marginTop="432dp" android:layout_marginLeft="30dp" android:layout_marginStart="30dp"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/post_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/post_btn"
+            android:layout_marginTop="432dp" android:layout_marginLeft="190dp" android:layout_marginStart="190dp"/>
 
 
-        </RelativeLayout>
 
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,31 +1,28 @@
-package com.example.chareta.data
+package com.example.chareta.data.remote.model
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.io.Serializable
+
 
 data class Item (
+
     @SerializedName("id")
-    @Expose
     val id: Long,
 
     @SerializedName("item_name")
-    @Expose
     val item_name: String,
 
     @SerializedName("item_description")
-    @Expose
     val item_description: String,
 
     @SerializedName("starting_price")
-    @Expose
     val starting_price: Long,
 
     @SerializedName("post_date")
-    @Expose
-    val post_date: Date,
+    val post_date: String,
 
     @SerializedName("expiry_date")
-    @Expose
-    val expiry_date: Date
-)
+    val expiry_date: String
+
+):Serializable
+
