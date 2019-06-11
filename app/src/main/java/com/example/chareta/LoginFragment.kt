@@ -22,7 +22,9 @@ class LoginFragment: Fragment() {
         view.click_here.setOnClickListener {
             (activity as NavigationHost).navigateTo(RegisterFragment(), true) // Navigate to the next Fragment
         }
+        //val Username = view.username_input_editText
 
         return view
+
     }
 }

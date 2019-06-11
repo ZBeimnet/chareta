@@ -9,6 +9,10 @@ import retrofit2.http.*
 
 interface UserService {
 
+
+
+
+
     @GET("users")
     fun getUsersAsync(): Deferred<Response<UsersEmbedded>>
 

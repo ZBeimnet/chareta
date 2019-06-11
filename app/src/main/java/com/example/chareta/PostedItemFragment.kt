@@ -51,69 +51,13 @@ class PostedItemFragment: Fragment() {
         recyclerView.setHasFixedSize(true)
 
 
-
-        itemViewModel.getAllItems().observe(this, Observer {
-            recyclerView.adapter = ItemRecyclerAdapter(it)
-        })
-
-<<<<<<< HEAD
-        itemNameTextView = view.item_name_text_view
-        startingPriceTextView = view.starting_price_text_view
-        expiryDateTextView = view.expiry_date_text_view
-        postedByTextView = view.posted_by_text_view
-
-
-<<<<<<< HEAD
-
-//     itemViewModel.getItemById(5).observe(this, Observer {
-//            val item = it
-//            //Log.d("item_Name", item.item_name)
-//            itemNameTextView.text = item?.item_name
-//            startingPriceTextView.text = item?.starting_price.toString()
-//            expiryDateTextView.text = item?.expiry_date.toString()
-//        })
-=======
         if(isConnected!!) {
-            itemViewModel.getItemById(5).observe(this, Observer {
-                val item = it
-                //Log.d("item_Name", item.item_name)
-                itemNameTextView.text = item?.item_name
-                startingPriceTextView.text = item?.starting_price.toString()
-                expiryDateTextView.text = item?.expiry_date.toString()
+            itemViewModel.getAllItems().observe(this, Observer {
+                recyclerView.adapter = ItemRecyclerAdapter(it)
             })
         }
->>>>>>> 7e151279f256c4bf9f616e627810d2dbf08ed539
-=======
 
 
-        ////////
-
-//        itemNameTextView = view.item_name_text_view
-//        startingPriceTextView = view.starting_price_text_view
-//        postedByTextView = view.posted_by_text_view
-//        expiryDateTextView = view.expiry_date_text_view
-
-
-//        if(isConnected!!) {
-//            itemViewModel.getAllItems().observe(this, Observer {
-//                val item = it?.get(0)
-//                //Log.d("item_Name", item.item_name)
-//                itemNameTextView.text = item?.item_name
-//                startingPriceTextView.text = item?.starting_price.toString()
-//                expiryDateTextView.text = item?.expiry_date.toString()
-//            })
-//        }
-
-//        if(isConnected!!) {
-//            userViewModel.getAllUsers().observe(this, Observer {
-//                val item = it?.get(0)
-//                //Log.d("item_Name", item.item_name)
-//                itemNameTextView.text = item?.user_name
-//                startingPriceTextView.text = item?.phone_number
-//                expiryDateTextView.text = item?.address
-//            })
-//        }
->>>>>>> aa31085cd757e7c32fe5917e3b61055f3175b4c8
 
         return view
     }

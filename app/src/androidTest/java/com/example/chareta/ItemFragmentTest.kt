@@ -41,7 +41,7 @@ class ItemFragmentTest {
         // When the FAB is clicked
         onView(withId(R.id.post_item)).perform(click())
 
-        // Then verify that we navigate to the add screen
+        // Then ve""rify that we navigate to the add screen
         verify(navController).navigate(
             PostedItemFragment.actionItemFragmentToPostItemFragment(
                 null, getApplicationContext<Context>().getString(R.string.post_btn)))
