@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import kotlinx.android.synthetic.main.fragment_item_detail.view.*
+import kotlinx.android.synthetic.main.item_detail_fragment.view.*
 
 
 
@@ -32,7 +31,7 @@ class ItemDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_item_detail, container, false)
+        val view = inflater.inflate(R.layout.item_detail_fragment, container, false)
        itemname = view.itemname_textview
 
        itemDetail = view.item_description

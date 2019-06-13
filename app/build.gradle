@@ -110,11 +110,6 @@ dependencies {
     def androidx_arch_version = "2.0.0"
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879
     //life-cycle components
     implementation "androidx.lifecycle:lifecycle-extensions:$arch_lifecycle_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$arch_lifecycle_version"

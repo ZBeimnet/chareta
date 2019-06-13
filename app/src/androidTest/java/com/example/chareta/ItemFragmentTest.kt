@@ -15,6 +15,7 @@ import androidx.test.filters.LargeTest
 
 import androidx.test.runner.AndroidJUnit4
 import com.example.chareta.repository.ItemRepository
+import com.example.chareta.view.PostedItemFragment
 import com.example.chareta.viewmodel.ItemViewModel
 import junit.framework.Assert.assertEquals
 import org.junit.After

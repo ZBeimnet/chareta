@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   >
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/appBarLayout2">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_bar"
+                style="@style/Widget.Chareta.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@android:color/white"
+                app:title="@string/app_name"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="@string/place_bid"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:id="@+id/place_bid_text_view"
+            android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13" android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline12"
+            android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.0"/>
+
+
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:id="@+id/itemname_textview"
+            android:hint="@string/item_names"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline12"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" android:layout_marginTop="92dp"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" app:layout_constraintHorizontal_bias="0.0"/>
+
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:id="@+id/item_starting_price"
+            android:hint="@string/starting_price"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline12"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/itemname_textview"/>
+    <TextView
+            android:id="@+id/item_description"
+            android:layout_width="0dp"
+            android:layout_height="106dp"
+            android:hint="@string/item_description"
+
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline12" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/item_starting_price"/>
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="68dp"
+            android:hint="@string/place_bid"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="@+id/guideline12"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/item_description" app:layout_constraintHorizontal_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:id="@+id/bid_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/Bid_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/placebid"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13" android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline14"/>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_back"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/guideline14" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/Bid_btn" android:layout_marginRight="8dp"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintGuide_begin="40dp" android:id="@+id/guideline12"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintGuide_end="40dp"
+            android:id="@+id/guideline13"/>
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintGuide_begin="451dp"
+            android:id="@+id/guideline14"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
