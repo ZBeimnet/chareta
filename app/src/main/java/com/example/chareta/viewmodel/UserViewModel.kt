@@ -25,51 +25,44 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         userRepository = UserRepository(userService)
     }
 
-    fun getAllUsers(): LiveData<List<User>> {
-        val allUsers: MutableLiveData<List<User>> = MutableLiveData()
+    private  val _getResponse = MutableLiveData<Response<User>>()
+    val getResponse: LiveData<Response<User>>
+        get() = _getResponse
 
-        viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<UsersWrapper> = userRepository.getAllUsersAsync().await()
-            val responseBody = response.body()
-            if(responseBody != null) {
-                withContext(Dispatchers.Main) {
-                    allUsers.value = responseBody.embeddedUsers.allUsers
-                }
-            }
+    private val _getResponses = MutableLiveData<Response<UsersWrapper>>()
+    val getResponses: LiveData<Response<UsersWrapper>>
+        get() = _getResponses
 
-        }
+    private val _updateResponse = MutableLiveData<Response<User>>()
+    val updateResponse: LiveData<Response<User>>
+        get() = _updateResponse
 
-        return allUsers
+    private val _insertResponse = MutableLiveData<Response<User>>()
+    val insertResponse: LiveData<Response<User>>
+        get() = _insertResponse
+
+    private val _deleteResponse = MutableLiveData<Response<Void>>()
+    val deleteResponse: MutableLiveData<Response<Void>>
+        get() = _deleteResponse
+
+
+    fun getUsers() = viewModelScope.launch {
+        _getResponses.postValue(userRepository.getUsers())
     }
 
-    fun getUserById(id: Long): LiveData<User> {
-        val user: MutableLiveData<User> = MutableLiveData()
-
-        viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<User> = userRepository.getUserById(id).await()
-            val responseBody = response.body()
-            if(responseBody != null) {
-                withContext(Dispatchers.Main) {
-                    user.value = responseBody
-                }
-            }
-
-        }
-
-        return user
+    fun getUserById(id: Long) = viewModelScope.launch {
+        _getResponse.postValue(userRepository.getUserById(id))
     }
 
-    fun registerUser(user: User) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<Void> = userRepository.addUserAsync(user).await()
-            Log.d("user_added", response.message())
-        }
+    fun insertUser(user: User) = viewModelScope.launch {
+        _insertResponse.postValue(userRepository.insertUser(user))
     }
 
-    fun deleteUser(id: Long) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<Void> = userRepository.deleteUserByIdAsync(id).await()
-            Log.d("user_deleted", response.message())
-        }
+    fun updateUser(id: Long, user: User) = viewModelScope.launch {
+        _updateResponse.postValue(userRepository.updateUser(id, user))
+    }
+
+    fun deleteUser(id: Long) = viewModelScope.launch {
+        _deleteResponse.postValue(userRepository.deleteUser(id))
     }
 }
