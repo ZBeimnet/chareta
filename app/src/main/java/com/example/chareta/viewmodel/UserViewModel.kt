@@ -71,11 +71,16 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     fun deleteUser(id: Long) = viewModelScope.launch {
         _deleteResponse.postValue(userRepository.deleteUser(id))
     }
- @Bindable
+ /*@Bindable
  val username = MutableLiveData<String>()
   @Bindable
   val password = MutableLiveData<String>()
-
+   @Bindable
+   val phoneno= MutableLiveData<String>()
+    @Bindable
+    val address = MutableLiveData<String>()
+    @Bindable
+    val confirmPassword = MutableLiveData<String>()
    fun cancelButtonClicked(){
 
    }
@@ -94,6 +99,12 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
             .replace(R.id.container,registerFragment)
             .commit()
     }
+    fun onRegisterButtonClicked(){
+
+    }
+    fun onBckButtonClicked(){
+
+    }*/
 
 
 
