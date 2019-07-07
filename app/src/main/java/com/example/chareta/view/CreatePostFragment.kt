@@ -47,7 +47,7 @@ fun clearFields(){
         itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
         val isConnected = activity?.connected()
         itemname = view.itemname_editext
-        itemdescription = view.itemdescription_edittext
+//        itemdescription = view.itemdescription_edittext
         startingprice = view.startingprice_Edittext
         expirydate = view.expiry_date_textview
         postbtn = view.post_button
@@ -67,7 +67,7 @@ fun clearFields(){
         }
         postbtn.setOnClickListener {
             if (isConnected!!) {
-                itemViewModel.addItem(readFields())
+                itemViewModel.insertItem(readFields())
                 clearFields()
                 Toast.makeText(context, "Post added", Toast.LENGTH_LONG).show()
             }
@@ -75,7 +75,7 @@ fun clearFields(){
         postdate_btn.setOnClickListener {
 
             val dpd =
-                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
+                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { _, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
 
                 }, year, month, day)

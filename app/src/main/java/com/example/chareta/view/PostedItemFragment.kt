@@ -13,6 +13,7 @@ import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
 import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.remote.model.ItemsWrapper
 import com.example.chareta.repository.ScalarRepository
 import com.example.chareta.viewmodel.ItemViewModel
 import com.example.chareta.viewmodel.UserViewModel
@@ -57,10 +58,11 @@ class PostedItemFragment: Fragment() {
 
         if(isConnected!!) {
 //            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
-            itemViewModel.getAllItems().observe(this, Observer {
+            itemViewModel.getItems()
+            itemViewModel.getResponses.observe(this, Observer {
 //                adapter.setData(it)
                 recyclerView.adapter =
-                    ItemRecyclerAdapter(it, activity!!.supportFragmentManager)
+                    ItemRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
             })
         }
 
