@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/chareta_navigation"
+            app:startDestination="@id/login_fragment">
+    <fragment android:id="@+id/login_fragment"
+              android:name="com.example.chareta.view.LoginFragment"
+              android:label="Login">
+
+        <action android:id="@+id/action_login_fragment_to_posted_item_fragment"
+                app:destination="@id/posted_item_fragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/posted_item_fragment"
+            android:name="com.example.chareta.view.PostedItemFragment"
+            android:label="Posted Items">
+        <action
+                android:id="@+id/next_posted_item_fragment"
+                app:destination="@+id/posted_item_fragment">
+        </action>
+
+    </fragment>
+
+
+    <fragment
+            android:id="@+id/status_fragment"
+            android:name="com.example.chareta.view.StatusFragment"
+            android:label="Posted Items">
+        <action
+                android:id="@+id/next_status_fragment"
+                tools:layout="@+id/status_fragment">
+        </action>
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/createPost_fragment"
+            android:name="com.example.chareta.view.CreatePostFragment"
+            tools:layout="@layout/create_post_fragment">
+
+        <action
+                android:id="@+id/next_create_post_fragment"
+                android:name="com.example.chareta.view.CreatePostFragment"
+                tools:layout="@layout/create_post_fragment">
+        </action>
+
+    </fragment>
+    <fragment android:id="@+id/yourBidsFragment2"
+              android:name="com.example.chareta.view.YourBidsFragment"
+              tools:layout="@layout/your_bids_fragment">
+        <action
+                android:id="@+id/next_your_bids_fragment"
+                tools:layout="@layout/your_bids_fragment">
+        </action>
+
+    </fragment>
+    <fragment android:id="@+id/your_post_fragment"
+              android:name="com.example.chareta.view.YourPostsFragment"
+              android:label="YourPostsFragment">
+        <action
+                android:id="@+id/next_your_post_fragment"
+                android:name="com.example.chareta.view.YourPostFragment"
+                tools:layout="@layout/your_posts_fragment">
+        </action>
+
+
+    </fragment>
+    <fragment android:id="@+id/postedItemFragment"
+              android:name="com.example.chareta.view.PostedItemFragment"
+              android:label="posted_item_fragment"
+              tools:layout="@layout/posted_item_fragment">
+        <action
+                android:id="@+id/next_posted_item_fragment"
+                android:name="com.example.charet.view.PostedItemFragment">
+        </action>
+    </fragment>
+
+
+</navigation>

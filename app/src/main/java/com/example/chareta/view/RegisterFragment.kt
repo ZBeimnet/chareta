@@ -79,8 +79,11 @@ class RegisterFragment: Fragment() {
 
         view.register_button.setOnClickListener {
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a9add1d37ccb5e5019c4d5d831e3fc5fe3e9d5b1
 //            userViewModel.registerUser(readFields())
 //            clearFields()
 //            registrationConfirmation.text = "Successfully Registered!"
@@ -93,10 +96,13 @@ class RegisterFragment: Fragment() {
             else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> a9add1d37ccb5e5019c4d5d831e3fc5fe3e9d5b1
         }
 
 

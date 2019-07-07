@@ -8,31 +8,23 @@ import retrofit2.http.*
 import java.util.*
 
 
-interface ItemService {
+interface  ItemService {
 
     @GET("items")
-    fun getItems(): Deferred<Response<ItemsWrapper>>
+    fun getItemsAsync(): Deferred<Response<ItemsWrapper>>
 
     @GET("items/{id}")
-    fun getItem(@Path("id") id: Long): Deferred<Response<Item>>
+    fun getItemAsync(@Path("id") id: Long): Deferred<Response<Item>>
 
     @GET("users/{id}/items")
-    fun getItemsByUserId(@Path("id") id: Long): Deferred<Response<ItemsWrapper>>
+    fun getItemsByUserIdAsync(@Path("id") id: Long): Deferred<Response<List<Item>>>
 
     @POST("items")
-    fun createItem(@Body newItem: Item): Deferred<Response<Void>>
+    fun insertItemAsync(@Body newItem: Item): Deferred<Response<Item>>
 
-    @FormUrlEncoded
-    @PUT("items/id")
-    fun updateItem(
-        @Path("id") id: Int,
-        @Field("item_name") item_name: String,
-        @Field("item_description") item_description: String,
-        @Field("starting_price") starting_price: Long,
-        @Field("post_date") date: Date,
-        @Field("expiry_date") expiry_date: Date
-    ): Deferred<Response<Void>>
+    @PUT("items/{id}")
+    fun updateItemAsync(@Path("id") id: Long, @Body item: Item): Deferred<Response<Item>>
 
     @DELETE("items/id")
-    fun deleteItem(@Path("id") id: Long): Deferred<Response<Void>>
+    fun deleteItemAsync(@Path("id") id: Long): Deferred<Response<Void>>
 }

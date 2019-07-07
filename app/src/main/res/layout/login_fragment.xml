@@ -7,8 +7,6 @@
             android:background="@color/loginPageBackgroundColor"
             tools:context=".view.LoginFragment">
 
-
-
         <!--<ImageView-->
                 <!--android:layout_width="64dp"-->
                 <!--android:layout_height="64dp"-->
