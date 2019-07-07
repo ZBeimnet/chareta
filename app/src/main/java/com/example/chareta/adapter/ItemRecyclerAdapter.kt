@@ -10,10 +10,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
 import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.remote.model.ItemsWrapper
 import com.example.chareta.view.ItemDetailFragment
 
 
-class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: FragmentManager) :
+class ItemRecyclerAdapter(private var allItems: ItemsWrapper, private var fm: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -23,23 +24,23 @@ class ItemRecyclerAdapter(private var allItems: List<Item>, private var fm: Frag
     }
 
     override fun getItemCount(): Int {
-        Log.d("Recycler View Adapter", allItems.size.toString())
-        return allItems.size
+        Log.d("Recycler View Adapter", allItems.embeddedItems.allItems.size.toString())
+        return allItems.embeddedItems.allItems.size
     }
-    fun setData(newItem: List<Item>) {
+    fun setData(newItem: ItemsWrapper) {
         this.allItems = newItem
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = allItems[position]
+        val item = allItems.embeddedItems.allItems[position]
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
         holder.expiryDate.text = item.expiry_date
 
         holder.itemView.setOnClickListener {
               fm.beginTransaction()
-                .replace(R.id.container, ItemDetailFragment.newInstance(allItems[position].id))
+                .replace(R.id.container, ItemDetailFragment.newInstance(allItems.embeddedItems.allItems[position].id))
                 .addToBackStack(null)
                 .commit()
         }

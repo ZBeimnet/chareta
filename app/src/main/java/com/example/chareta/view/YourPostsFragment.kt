@@ -42,9 +42,10 @@ class YourPostsFragment: Fragment() {
 
 
         if(isConnected) {
-            itemViewModel.getItemsByUserId(1).observe(this, Observer {
+            itemViewModel.getItemsByUserId(1)
+            itemViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
-                    ManageRecyclerAdapter(it, activity.supportFragmentManager)
+                    ManageRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
             })
         }
 

@@ -80,7 +80,7 @@ class RegisterFragment: Fragment() {
 //            registrationConfirmation.text = "Successfully Registered!"
 
             if(isConnected!!) {
-                userViewModel.registerUser(readFields())
+                userViewModel.insertUser(readFields())
                 clearFields()
                 registrationConfirmation.text = "Successfully Registered!"
             }

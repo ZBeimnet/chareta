@@ -9,18 +9,19 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.chareta.view.*
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationHost {
 
-    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -28,16 +29,23 @@ class MainActivity : AppCompatActivity(), NavigationHost {
                 .commit()
         }
 
-        hideBottomBar(false)
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
+
+        // Set up Action Bar
+        val navController = host.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         //navigation to every fragment using NavController
-
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation?.setupWithNavController(navController)
 
 
-    }
 
+        //hide the bottom bar
+        hideBottomBar(false)
+
+    }
 
     fun hideBottomBar(isHidden: Boolean) {
         bottom_navigation.visibility = if (isHidden) View.GONE else View.VISIBLE
@@ -65,5 +73,4 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         return networkInfo != null && networkInfo.isConnected
 
     }
-
 }
