@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/chareta_navigation"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/chareta_navigation"
             app:startDestination="@id/login_fragment">
+
     <fragment android:id="@+id/login_fragment"
               android:name="com.example.chareta.view.LoginFragment"
               android:label="Login">
@@ -17,7 +19,6 @@
 
     <fragment android:id="@+id/registerFragment"
               android:name="com.example.chareta.view.RegisterFragment"
-              android:label="posted_item_fragment"
               tools:layout="@layout/register_fragment">
         <action
                 android:id="@+id/register_fragment"
@@ -60,7 +61,7 @@
         </action>
 
     </fragment>
-    <fragment android:id="@+id/yourBidsFragment2"
+    <fragment android:id="@+id/yourBidsFragment"
               android:name="com.example.chareta.view.YourBidsFragment"
               tools:layout="@layout/your_bids_fragment">
         <action
@@ -70,8 +71,7 @@
 
     </fragment>
     <fragment android:id="@+id/your_post_fragment"
-              android:name="com.example.chareta.view.YourPostsFragment"
-              android:label="YourPostsFragment">
+              android:name="com.example.chareta.view.YourPostsFragment">
         <action
                 android:id="@+id/next_your_post_fragment"
                 android:name="com.example.chareta.view.YourPostFragment"
