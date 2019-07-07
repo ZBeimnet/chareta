@@ -15,9 +15,10 @@ import com.example.chareta.R
 import com.example.chareta.data.remote.model.User
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
+import androidx.databinding.DataBindingUtil
 
 class RegisterFragment: Fragment() {
-
+   // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
     private lateinit var userViewModel: UserViewModel
 
     private lateinit var userNameEditText: EditText
@@ -30,7 +31,7 @@ class RegisterFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
+       // binding = DataBindingUtil.setContentView(requireActivity(), R.layout.register_fragment)
         userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
     }
@@ -45,9 +46,9 @@ class RegisterFragment: Fragment() {
         val isConnected = activity?.connected()
 
         /////
-        userNameEditText = view.register_username_edit_text
+    userNameEditText = view.register_username_edit_text
         phoneEditText = view.register_phone_edit_text
-        addressEditText = view.register_address_edit_text
+       addressEditText = view.register_address_edit_text
         passwordEditText = view.register_password_edit_text
         confirmEditText = view.confirm_password_edit_text
         registrationConfirmation = view.register_confirmation_text_view
@@ -58,7 +59,21 @@ class RegisterFragment: Fragment() {
             (activity as NavigationHost).navigateTo(LoginFragment(), false) // Navigate to the next Fragment
         }
 
+//        binding.register_button.setOnclickListener{
+//            if(isConnected!!) {
+//                userViewModel.registerUser(readFields())
+//                clearFields()
+//                registrationConfirmation.text = "Successfully Registered!"
+//            }
+//            else {
+//                registrationConfirmation.text = "Not connected to a network!"
+//            }
+//        }
+
         view.register_button.setOnClickListener {
+
+
+
 
 //            userViewModel.registerUser(readFields())
 //            clearFields()
@@ -72,6 +87,12 @@ class RegisterFragment: Fragment() {
             else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
+
+
+
+
+
+
         }
 
 
