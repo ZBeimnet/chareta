@@ -22,7 +22,6 @@ class LoginFragment : Fragment() {
 
         view.login_button.setOnClickListener {
             Navigation.createNavigateOnClickListener(R.id.postedItemFragment)
-
         }
 
         //navigate to register fragment
@@ -30,9 +29,6 @@ class LoginFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.registerFragment)
         }
         //val Username = view.username_input_editText
-
-
-
 
         return view
 

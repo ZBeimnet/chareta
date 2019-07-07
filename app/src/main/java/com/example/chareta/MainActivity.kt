@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.chareta.view.*
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         //navigation to every fragment using NavController
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation?.setupWithNavController(navController)
-
+        Log.d("abc", "abc")
 
 
         //hide the bottom bar
