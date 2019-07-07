@@ -8,8 +8,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
 import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.remote.model.ItemsWrapper
 
-class ManageRecyclerAdapter(private var allItems: List<Item>, private var fm: FragmentManager):
+class ManageRecyclerAdapter(private var allItems: ItemsWrapper, private var fm: FragmentManager):
     RecyclerView.Adapter<ManageRecyclerAdapter.ManageViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManageViewHolder {
@@ -19,11 +20,11 @@ class ManageRecyclerAdapter(private var allItems: List<Item>, private var fm: Fr
     }
 
     override fun getItemCount(): Int {
-        return allItems.size
+        return allItems.embeddedItems.allItems.size
     }
 
     override fun onBindViewHolder(holder: ManageViewHolder, position: Int) {
-        val item = allItems[position]
+        val item = allItems.embeddedItems.allItems[position]
         holder.itemName.text = item.item_name
         holder.startingPrice.text = item.starting_price.toString()
         holder.expiryDate.text = item.expiry_date
