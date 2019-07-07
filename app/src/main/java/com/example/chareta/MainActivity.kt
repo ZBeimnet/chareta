@@ -15,36 +15,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationHost {
 
-    private val onNavigationItemSelectedLitsner = BottomNavigationView.OnNavigationItemSelectedListener {
-            when(it.itemId) {
-            R.id.bottom_posted -> {
-                navigateTo(PostedItemFragment(), false)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.bottom_bids -> {
-                navigateTo(YourBidsFragment(), false)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.bottom_manage -> {
-                navigateTo(YourPostsFragment(), false)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.bottom_status -> {
-                navigateTo(StatusFragment(), false)
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
-
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
 
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -53,17 +28,16 @@ class MainActivity : AppCompatActivity(), NavigationHost {
                 .commit()
         }
 
-        bottom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedLitsner)
-
         hideBottomBar(false)
 
+        //navigation to every fragment using NavController
+
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation?.setupWithNavController(navController)
+
 
     }
-    //bottom navigation setup
-    fun setupBottomNavMenu(navController: NavController) {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav?.setupWithNavController(navController)
-    }
+
 
     fun hideBottomBar(isHidden: Boolean) {
         bottom_navigation.visibility = if (isHidden) View.GONE else View.VISIBLE
@@ -82,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         transaction.commit()
     }
 
-    fun connected():Boolean {
+    fun connected(): Boolean {
 
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager

@@ -59,10 +59,7 @@ class RegisterFragment: Fragment() {
         }
 
         view.register_button.setOnClickListener {
-<<<<<<< HEAD:app/src/main/java/com/example/chareta/RegisterFragment.kt
-=======
 
->>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879:app/src/main/java/com/example/chareta/view/RegisterFragment.kt
 //            userViewModel.registerUser(readFields())
 //            clearFields()
 //            registrationConfirmation.text = "Successfully Registered!"
@@ -75,10 +72,6 @@ class RegisterFragment: Fragment() {
             else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
-<<<<<<< HEAD:app/src/main/java/com/example/chareta/RegisterFragment.kt
-=======
-
->>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879:app/src/main/java/com/example/chareta/view/RegisterFragment.kt
         }
 
 
