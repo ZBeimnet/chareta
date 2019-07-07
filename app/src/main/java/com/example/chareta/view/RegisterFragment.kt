@@ -44,13 +44,6 @@ class RegisterFragment: Fragment() {
         activity?.hideBottomBar(true)
 
         val isConnected = activity?.connected()
-//        userNameEditText = binding.register_username_edit_text
-//        phoneEditText = binding.register_phone_edit_text
-//        addressEditText = binding.register_address_edit_text
-//        passwordEditText = binding.register_password_edit_text
-//        confirmEditText = binding.confirm_password_edit_text
-//        registrationConfirmation = binding.register_confirmation_text_view
-//        registrationConfirmation.text = ""
 
         /////
     userNameEditText = view.register_username_edit_text
@@ -79,11 +72,9 @@ class RegisterFragment: Fragment() {
 
         view.register_button.setOnClickListener {
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> a9add1d37ccb5e5019c4d5d831e3fc5fe3e9d5b1
+
 //            userViewModel.registerUser(readFields())
 //            clearFields()
 //            registrationConfirmation.text = "Successfully Registered!"
@@ -96,13 +87,12 @@ class RegisterFragment: Fragment() {
             else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> a9add1d37ccb5e5019c4d5d831e3fc5fe3e9d5b1
+
+
         }
 
 
