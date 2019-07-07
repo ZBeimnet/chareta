@@ -9,6 +9,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.chareta.view.*
 import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -29,21 +31,24 @@ class MainActivity : AppCompatActivity(), NavigationHost {
                 .commit()
         }
 
-        val host: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
+//        val host: NavHostFragment = supportFragmentManager
+//            .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
 
         // Set up Action Bar
-        val navController = host.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+//        val navController = host.navController
+//        appBarConfiguration = AppBarConfiguration(navController.graph)
 
         //navigation to every fragment using NavController
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation?.setupWithNavController(navController)
+//        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+//        bottomNavigation?.setupWithNavController(navController)
 
-
+        val navController = findNavController(R.id.my_nav_host_fragment)
+        findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            .setupWithNavController(navController)
 
         //hide the bottom bar
         hideBottomBar(false)
+
 
     }
 
