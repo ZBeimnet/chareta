@@ -21,7 +21,7 @@
               tools:layout="@layout/register_fragment">
         <action
                 android:id="@+id/register_fragment"
-                android:name="com.example.charet.view.RegisterFragment">
+                android:name="com.example.chareta.view.RegisterFragment">
         </action>
     </fragment>
 
@@ -86,7 +86,7 @@
               tools:layout="@layout/posted_item_fragment">
         <action
                 android:id="@+id/next_posted_item_fragment"
-                android:name="com.example.charet.view.PostedItemFragment">
+                android:name="com.example.chareta.view.PostedItemFragment">
         </action>
     </fragment>
 
