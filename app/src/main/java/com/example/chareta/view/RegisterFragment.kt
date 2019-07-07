@@ -15,9 +15,10 @@ import com.example.chareta.R
 import com.example.chareta.data.remote.model.User
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
+import androidx.databinding.DataBindingUtil
 
 class RegisterFragment: Fragment() {
-
+   // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
     private lateinit var userViewModel: UserViewModel
 
     private lateinit var userNameEditText: EditText
@@ -30,7 +31,7 @@ class RegisterFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
+       // binding = DataBindingUtil.setContentView(requireActivity(), R.layout.register_fragment)
         userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
     }
@@ -43,11 +44,18 @@ class RegisterFragment: Fragment() {
         activity?.hideBottomBar(true)
 
         val isConnected = activity?.connected()
+//        userNameEditText = binding.register_username_edit_text
+//        phoneEditText = binding.register_phone_edit_text
+//        addressEditText = binding.register_address_edit_text
+//        passwordEditText = binding.register_password_edit_text
+//        confirmEditText = binding.confirm_password_edit_text
+//        registrationConfirmation = binding.register_confirmation_text_view
+//        registrationConfirmation.text = ""
 
         /////
-        userNameEditText = view.register_username_edit_text
+    userNameEditText = view.register_username_edit_text
         phoneEditText = view.register_phone_edit_text
-        addressEditText = view.register_address_edit_text
+       addressEditText = view.register_address_edit_text
         passwordEditText = view.register_password_edit_text
         confirmEditText = view.confirm_password_edit_text
         registrationConfirmation = view.register_confirmation_text_view
@@ -58,11 +66,21 @@ class RegisterFragment: Fragment() {
             (activity as NavigationHost).navigateTo(LoginFragment(), false) // Navigate to the next Fragment
         }
 
-        view.register_button.setOnClickListener {
-<<<<<<< HEAD:app/src/main/java/com/example/chareta/RegisterFragment.kt
-=======
+//        binding.register_button.setOnclickListener{
+//            if(isConnected!!) {
+//                userViewModel.registerUser(readFields())
+//                clearFields()
+//                registrationConfirmation.text = "Successfully Registered!"
+//            }
+//            else {
+//                registrationConfirmation.text = "Not connected to a network!"
+//            }
+//        }
 
->>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879:app/src/main/java/com/example/chareta/view/RegisterFragment.kt
+        view.register_button.setOnClickListener {
+
+
+
 //            userViewModel.registerUser(readFields())
 //            clearFields()
 //            registrationConfirmation.text = "Successfully Registered!"
@@ -75,10 +93,10 @@ class RegisterFragment: Fragment() {
             else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
-<<<<<<< HEAD:app/src/main/java/com/example/chareta/RegisterFragment.kt
-=======
 
->>>>>>> 76a7b9f233f011a54db2c898fbfcf10753acd879:app/src/main/java/com/example/chareta/view/RegisterFragment.kt
+
+
+
         }
 
 
