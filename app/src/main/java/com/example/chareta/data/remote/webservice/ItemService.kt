@@ -8,7 +8,7 @@ import retrofit2.http.*
 import java.util.*
 
 
-interface ItemService {
+interface  ItemService {
 
     @GET("items")
     fun getItems(): Deferred<Response<ItemsWrapper>>
