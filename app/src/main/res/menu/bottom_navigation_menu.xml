@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/bottom_posted"
+    <item android:id="@+id/next_posted_item_fragment"
           android:title="Posts"
           android:icon="@drawable/ic_local_post_office_black_24dp"
     />
-    <item android:id="@+id/bottom_bids"
+    <item android:id="@+id/next_your_bids_fragment"
           android:title="Bids"
           android:icon="@drawable/ic_bookmark_black_24dp"
     />
-    <item android:id="@+id/bottom_manage"
-          android:title="Manage"
+    <item android:id="@+id/next_your_post_fragment"
+          android:title="Manage posts"
           android:icon="@drawable/ic_settings_black_24dp"
     />
-    <item android:id="@+id/bottom_status"
+    <item android:id="@+id/next_status_fragment"
           android:title="Status"
           android:icon="@drawable/ic_notifications_active_black_24dp"
     />
