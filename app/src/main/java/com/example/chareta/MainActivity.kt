@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), NavigationHost {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -42,12 +41,11 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         bottomNavigation?.setupWithNavController(navController)
 
 
+
         //hide the bottom bar
         hideBottomBar(false)
 
-
     }
-
 
     fun hideBottomBar(isHidden: Boolean) {
         bottom_navigation.visibility = if (isHidden) View.GONE else View.VISIBLE
@@ -75,5 +73,4 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         return networkInfo != null && networkInfo.isConnected
 
     }
-
 }

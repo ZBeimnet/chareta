@@ -9,6 +9,20 @@
 
         <action android:id="@+id/action_login_fragment_to_posted_item_fragment"
                 app:destination="@id/posted_item_fragment"/>
+        <action
+            android:id="@+id/action_login_fragment_to_register_fragment"
+            app:destination="@+id/register_fragment"
+            />
+    </fragment>
+
+    <fragment android:id="@+id/registerFragment"
+              android:name="com.example.chareta.view.RegisterFragment"
+              android:label="posted_item_fragment"
+              tools:layout="@layout/register_fragment">
+        <action
+                android:id="@+id/register_fragment"
+                android:name="com.example.charet.view.RegisterFragment">
+        </action>
     </fragment>
 
     <fragment
@@ -75,6 +89,8 @@
                 android:name="com.example.charet.view.PostedItemFragment">
         </action>
     </fragment>
+
+
 
 
 </navigation>
