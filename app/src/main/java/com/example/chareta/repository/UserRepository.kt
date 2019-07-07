@@ -4,23 +4,34 @@ import com.example.chareta.data.remote.model.User
 import com.example.chareta.data.remote.model.UsersWrapper
 import com.example.chareta.data.remote.webservice.UserService
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class UserRepository(private val userService: UserService) {
 
-    fun getAllUsersAsync(): Deferred<Response<UsersWrapper>> {
-        return userService.getUsersAsync()
+    suspend fun getUsers(): Response<UsersWrapper> =
+        withContext(Dispatchers.IO) {
+            userService.getUsersAsync().await()
     }
 
-    fun getUserById(id: Long): Deferred<Response<User>> {
-        return userService.getUserByIdAsync(id)
+    suspend fun getUserById(id: Long): Response<User> =
+        withContext(Dispatchers.IO) {
+            userService.getUserAsync(id).await()
     }
 
-    fun addUserAsync(user: User): Deferred<Response<Void>> {
-        return userService.createUserAsync(user)
+    suspend fun insertUser(user: User): Response<User> =
+        withContext(Dispatchers.IO) {
+            userService.insertUserAsync(user).await()
     }
 
-    fun deleteUserByIdAsync(id: Long): Deferred<Response<Void>> {
-        return userService.deleteUserByIdAsync(id)
+    suspend fun updateUser(id: Long, user: User): Response<User> =
+        withContext(Dispatchers.IO) {
+            userService.updateUserAsync(id, user).await()
+    }
+
+    suspend fun deleteUser(id: Long): Response<Void> =
+        withContext(Dispatchers.IO) {
+            userService.deleteUserAsync(id).await()
     }
 }

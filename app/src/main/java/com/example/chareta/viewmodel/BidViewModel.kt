@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chareta.data.remote.model.Bid
+import com.example.chareta.data.remote.model.BidsWrapper
 import com.example.chareta.repository.BidRepository
 import com.example.chareta.data.remote.webservice.BidService
 import com.example.chareta.data.remote.webservice.ServiceBuilder
@@ -23,19 +24,52 @@ class BidViewModel(application: Application): AndroidViewModel(application) {
         bidRepository = BidRepository(bidService)
     }
 
-    fun getBidsByItemId(id: Long): LiveData<List<Bid>> {
-        val bids: MutableLiveData<List<Bid>> = MutableLiveData()
+    private  val _getResponse = MutableLiveData<Response<Bid>>()
+    val getResponse: LiveData<Response<Bid>>
+        get() = _getResponse
 
-        viewModelScope.launch(Dispatchers.IO) {
-            val response: Response<List<Bid>> = bidRepository.getBidsByItemIdAsync(id).await()
-            val responseBody = response.body()
-            if(responseBody != null) {
-                withContext(Dispatchers.Main) {
-                    bids.value = responseBody
-                }
-            }
-        }
+    private val _getResponses = MutableLiveData<Response<BidsWrapper>>()
+    val getResponses: LiveData<Response<BidsWrapper>>
+        get() = _getResponses
 
-        return bids
+    private val _getRelatedResponses = MutableLiveData<Response<List<Bid>>>()
+    val getRelatedResponses: LiveData<Response<List<Bid>>>
+        get() = _getRelatedResponses
+
+    private val _updateResponse = MutableLiveData<Response<Bid>>()
+    val updateResponse: LiveData<Response<Bid>>
+        get() = _updateResponse
+
+    private val _insertResponse = MutableLiveData<Response<Bid>>()
+    val insertResponse: LiveData<Response<Bid>>
+        get() = _insertResponse
+
+    private val _deleteResponse = MutableLiveData<Response<Void>>()
+    val deleteResponse: MutableLiveData<Response<Void>>
+        get() = _deleteResponse
+
+    fun getBids() = viewModelScope.launch {
+        _getResponses.postValue(bidRepository.getBids())
     }
+
+    fun getBidById(id: Long) = viewModelScope.launch{
+        _getResponse.postValue(bidRepository.getBidById(id))
+    }
+
+    fun getBidsByItemId(itemId: Long) = viewModelScope.launch {
+        _getRelatedResponses.postValue(bidRepository.getBidsByItemId(itemId))
+    }
+
+    fun insertBid(bid: Bid) = viewModelScope.launch {
+        _insertResponse.postValue(bidRepository.insertBid(bid))
+    }
+
+    fun updateItem(id: Long, bid: Bid) = viewModelScope.launch {
+        _updateResponse.postValue(bidRepository.updateItem(id, bid))
+    }
+
+    fun deleteItem(id: Long) = viewModelScope.launch {
+        _deleteResponse.postValue(bidRepository.deleteItem(id))
+    }
+
 }
