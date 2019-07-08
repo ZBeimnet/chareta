@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity(), NavigationHost {
                 .add(R.id.container, LoginFragment())
                 .commit()
         }
-
         val navController = findNavController(R.id.my_nav_host_fragment)
+        navController.setGraph(R.navigation.chareta_navigation)
+
         findViewById<BottomNavigationView>(R.id.bottom_navigation)
             .setupWithNavController(navController)
 
