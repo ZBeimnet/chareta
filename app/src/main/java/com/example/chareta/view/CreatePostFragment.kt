@@ -62,9 +62,8 @@ fun clearFields(){
 
         backbtn.setOnClickListener {
             (activity as NavigationHost).navigateTo(PostedItemFragment(), true)
-
-
         }
+
         postbtn.setOnClickListener {
             if (isConnected!!) {
                 itemViewModel.insertItem(readFields())
@@ -72,6 +71,7 @@ fun clearFields(){
                 Toast.makeText(context, "Post added", Toast.LENGTH_LONG).show()
             }
         }
+
         postdate_btn.setOnClickListener {
 
             val dpd =
