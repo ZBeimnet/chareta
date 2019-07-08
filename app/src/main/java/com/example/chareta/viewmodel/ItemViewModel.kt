@@ -33,9 +33,9 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     val getResponses: LiveData<Response<ItemsWrapper>>
         get() = _getResponses
 
-    private val _getRelatedResponses = MutableLiveData<Response<List<Item>>>()
-    val getRelatedResponses: LiveData<Response<List<Item>>>
-        get() = _getRelatedResponses
+//    private val _getRelatedResponses = MutableLiveData<Response<List<Item>>>()
+//    val getRelatedResponses: LiveData<Response<List<Item>>>
+//        get() = _getRelatedResponses
 
     private val _updateResponse = MutableLiveData<Response<Item>>()
     val updateResponse: LiveData<Response<Item>>
@@ -59,7 +59,7 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun getItemsByUserId(userId: Long) = viewModelScope.launch {
-        _getRelatedResponses.postValue(itemRepository.getItemsByUserId(userId))
+        _getResponses.postValue(itemRepository.getItemsByUserId(userId))
     }
 
     fun insertItem(item: Item) = viewModelScope.launch {

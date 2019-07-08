@@ -10,13 +10,10 @@ interface ItemDao {
     @Query("SELECT * FROM items WHERE  id = :id")
     fun getItemById(id: Long): LiveData<Item>
 
+    @Query("SELECT * FROM items")
+    fun getItems(): LiveData<List<Item>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertItem(item: Item)
-
-    @Update
-    fun updateItem(item: Item)
-
-    @Delete
-    fun deleteItemById(item: Item)
 
 }

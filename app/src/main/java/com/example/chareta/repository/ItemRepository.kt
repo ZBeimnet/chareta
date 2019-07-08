@@ -19,7 +19,7 @@ class ItemRepository(private val itemService: ItemService) {
             itemService.getItemAsync(id).await()
     }
 
-    suspend fun getItemsByUserId(id: Long): Response<List<Item>> =
+    suspend fun getItemsByUserId(id: Long): Response<ItemsWrapper> =
         withContext(Dispatchers.IO) {
             itemService.getItemsByUserIdAsync(id).await()
     }

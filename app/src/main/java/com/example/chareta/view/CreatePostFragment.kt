@@ -47,7 +47,7 @@ fun clearFields(){
         itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
         val isConnected = activity?.connected()
         itemname = view.itemname_editext
-//        itemdescription = view.itemdescription_edittext
+        itemdescription = view.item_description_edit_text
         startingprice = view.startingprice_Edittext
         expirydate = view.expiry_date_textview
         postbtn = view.post_button
@@ -75,7 +75,7 @@ fun clearFields(){
         postdate_btn.setOnClickListener {
 
             val dpd =
-                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { _, myear, mmonth, mday ->
+                DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
                     expirydate.setText(" " + mday + "/" + mmonth + "/" + myear)
 
                 }, year, month, day)

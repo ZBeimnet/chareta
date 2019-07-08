@@ -21,12 +21,14 @@ class LoginFragment : Fragment() {
         activity?.hideBottomBar(true)
 
         view.login_button.setOnClickListener {
-            Navigation.createNavigateOnClickListener(R.id.postedItemFragment)
+//            Navigation.createNavigateOnClickListener(R.id.postedItemFragment)
+            (activity as NavigationHost).navigateTo(PostedItemFragment(), true)
         }
 
         //navigate to register fragment
         view.click_here.setOnClickListener {
-            Navigation.createNavigateOnClickListener(R.id.registerFragment)
+            //Navigation.createNavigateOnClickListener(R.id.registerFragment)
+            (activity as NavigationHost).navigateTo(RegisterFragment(), true)
         }
         //val Username = view.username_input_editText
 

@@ -62,8 +62,8 @@
             app:layout_constraintTop_toBottomOf="@+id/itemname_textview"/>
     <TextView
             android:id="@+id/item_description"
-            android:layout_width="0dp"
-            android:layout_height="106dp"
+            android:layout_width="328dp"
+            android:layout_height="59dp"
             android:hint="@string/item_description"
 
             android:textSize="24sp"
@@ -117,11 +117,11 @@
     <androidx.constraintlayout.widget.Guideline
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintGuide_end="40dp"
+            android:layout_height="wrap_content" app:layout_constraintGuide_end="34dp"
             android:id="@+id/guideline13"/>
     <androidx.constraintlayout.widget.Guideline
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintGuide_begin="451dp"
+            android:layout_height="wrap_content" app:layout_constraintGuide_begin="410dp"
             android:id="@+id/guideline14"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

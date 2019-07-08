@@ -22,6 +22,28 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    private val onNavigationItemSelectedLitsner = BottomNavigationView.OnNavigationItemSelectedListener {
+        when(it.itemId) {
+            R.id.bottom_posted -> {
+                navigateTo(PostedItemFragment(), false)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.bottom_bids -> {
+                navigateTo(YourBidsFragment(), false)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.bottom_manage -> {
+                navigateTo(YourPostsFragment(), false)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.bottom_status -> {
+                navigateTo(StatusFragment(), false)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,11 +53,14 @@ class MainActivity : AppCompatActivity(), NavigationHost {
                 .add(R.id.container, LoginFragment())
                 .commit()
         }
-        val navController = findNavController(R.id.my_nav_host_fragment)
-        navController.setGraph(R.navigation.chareta_navigation)
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation)
-            .setupWithNavController(navController)
+//        val navController = findNavController(R.id.my_nav_host_fragment)
+//        navController.setGraph(R.navigation.chareta_navigation)
+//
+//        findViewById<BottomNavigationView>(R.id.bottom_navigation)
+//            .setupWithNavController(navController)
+
+        bottom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedLitsner)
 
         //hide the bottom bar
         hideBottomBar(false)
