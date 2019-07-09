@@ -1,6 +1,7 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,13 +19,24 @@ import retrofit2.Response
 
 class BidViewModel(application: Application): AndroidViewModel(application) {
 
-    private val bidRepository: BidRepository
+     private val bidRepository: BidRepository
+
 
     init {
         val bidService = ServiceBuilder.buildService(BidService::class.java)
         val bidDao = CharetaDatabase.getDatabase(application).bidDao()
         bidRepository = BidRepository(bidService, bidDao)
     }
+      @Bindable
+      val yourBid = MutableLiveData<String>()
+
+    fun onPlaceBidButtonClicked(){
+        insertBid(Bid(0, yourBid.toString().toLong(), java.util.Date().toString()))
+    }
+    fun onBackButtonClicked(){
+
+    }
+
 
     private  val _getResponse = MutableLiveData<Response<Bid>>()
     val getResponse: LiveData<Response<Bid>>
