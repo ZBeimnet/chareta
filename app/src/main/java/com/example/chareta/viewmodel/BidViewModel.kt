@@ -1,15 +1,17 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.chareta.data.remote.model.Bid
-import com.example.chareta.data.remote.model.BidsWrapper
+import com.example.chareta.data.local.CharetaDatabase
+import com.example.chareta.data.model.Bid
+import com.example.chareta.data.model.BidsWrapper
 import com.example.chareta.repository.BidRepository
 import com.example.chareta.data.remote.webservice.BidService
-import com.example.chareta.data.remote.webservice.ServiceBuilder
+import com.example.chareta.data.remote.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,12 +19,24 @@ import retrofit2.Response
 
 class BidViewModel(application: Application): AndroidViewModel(application) {
 
-    private val bidRepository: BidRepository
+     private val bidRepository: BidRepository
+
 
     init {
         val bidService = ServiceBuilder.buildService(BidService::class.java)
-        bidRepository = BidRepository(bidService)
+        val bidDao = CharetaDatabase.getDatabase(application).bidDao()
+        bidRepository = BidRepository(bidService, bidDao)
     }
+      @Bindable
+      val yourBid = MutableLiveData<String>()
+
+    fun onPlaceBidButtonClicked(){
+        insertBid(Bid(0, yourBid.toString().toLong(), java.util.Date().toString()))
+    }
+    fun onBackButtonClicked(){
+
+    }
+
 
     private  val _getResponse = MutableLiveData<Response<Bid>>()
     val getResponse: LiveData<Response<Bid>>
@@ -70,6 +84,17 @@ class BidViewModel(application: Application): AndroidViewModel(application) {
 
     fun deleteItem(id: Long) = viewModelScope.launch {
         _deleteResponse.postValue(bidRepository.deleteItem(id))
+    }
+
+    fun getBidsFromLocal(): LiveData<List<Bid>> {
+        lateinit var bids: LiveData<List<Bid>>
+        viewModelScope.launch {
+            val allBids = bidRepository.getBidsFromLocal()
+            withContext(Dispatchers.Main) {
+                bids = allBids
+            }
+        }
+        return bids
     }
 
 }

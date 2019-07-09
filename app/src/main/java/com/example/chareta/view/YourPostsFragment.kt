@@ -39,16 +39,13 @@ class YourPostsFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
-
-
         if(isConnected) {
             itemViewModel.getItemsByUserId(1)
             itemViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
-                    ManageRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
+                    ManageRecyclerAdapter(it.body()!!, itemViewModel)
             })
         }
-
         return view
     }
 
@@ -56,13 +53,13 @@ class YourPostsFragment: Fragment() {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
 
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
             R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)
         }
-
         return super.onOptionsItemSelected(item)
     }
 }

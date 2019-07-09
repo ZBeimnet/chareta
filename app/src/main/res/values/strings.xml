@@ -32,7 +32,7 @@
     <string name="logout">Logout</string>
 
     <string name="edit_button">Edit</string>
-    <string name="withdraw_button">Withdraw</string>
+    <string name="withdraw_button">Delete</string>
     <string name="see_bids">Bids</string>
 
     <string name="item_details">Item Detail</string>

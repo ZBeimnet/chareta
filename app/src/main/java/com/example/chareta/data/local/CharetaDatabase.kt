@@ -7,9 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.chareta.data.local.dao.BidDao
 import com.example.chareta.data.local.dao.ItemDao
 import com.example.chareta.data.local.dao.UserDao
-import com.example.chareta.data.local.model.Bid
-import com.example.chareta.data.local.model.Item
-import com.example.chareta.data.local.model.User
+import com.example.chareta.data.model.Bid
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.User
 
 @Database(entities = arrayOf(User::class, Item::class, Bid::class), version = 1, exportSchema = false)
 abstract class CharetaDatabase: RoomDatabase() {

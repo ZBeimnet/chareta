@@ -61,15 +61,6 @@
                         android:layout_toStartOf="@id/edit_button"
                         android:layout_toLeftOf="@id/edit_button"
                         android:text="@string/withdraw_button" />
-                <com.google.android.material.button.MaterialButton
-                        android:id="@+id/see_bids_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:layout_toStartOf="@id/withdraw_button"
-                        android:layout_toLeftOf="@id/withdraw_button"
-                        android:text="@string/see_bids" />
 
             </RelativeLayout>
         </LinearLayout>

@@ -1,17 +1,49 @@
 package com.example.chareta.repository
 
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import android.util.Log
+import androidx.lifecycle.LiveData
+import com.example.chareta.data.local.dao.ItemDao
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.data.remote.webservice.ItemService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class ItemRepository(private val itemService: ItemService) {
+class ItemRepository(private val itemService: ItemService, private val itemDao: ItemDao) {
 
-    suspend fun getItems(): Response<ItemsWrapper> =
+    private fun saveItemsToLocal(items: List<Item>) {
+        for(item in items) {
+            itemDao.insertItem(item)
+        }
+    }
+
+    private fun saveItemToLocal(item: Item) {
+        itemDao.insertItem(item)
+    }
+
+    suspend fun getItemsFromLocal(): LiveData<List<Item>> =
         withContext(Dispatchers.IO) {
-            itemService.getItemsAsync().await()
+            itemDao.getItems()
+    }
+
+    private fun deleteItemFromLocal(itemId: Long) {
+        itemDao.deleteItemById(itemId)
+    }
+
+    suspend fun getItems(): Response<ItemsWrapper> {
+        lateinit var items: Response<ItemsWrapper>
+        withContext(Dispatchers.IO) {
+            val allItems = itemService.getItemsAsync().await()
+            saveItemsToLocal(allItems.body()!!.embeddedItems.allItems)  //saving item to a local database
+            withContext(Dispatchers.Main) {
+                items = allItems
+            }
+        }
+        val i: Int = items.body()!!.embeddedItems.allItems.size
+        Log.d("items", i.toString() )
+
+        return items
     }
 
     suspend fun getItemById(id: Long): Response<Item> =
@@ -26,18 +58,20 @@ class ItemRepository(private val itemService: ItemService) {
 
     suspend fun insertItem(item: Item): Response<Item> =
         withContext(Dispatchers.IO) {
+//            saveItemToLocal(item)   //updating the local database
             itemService.insertItemAsync(item).await()
     }
 
     suspend fun updateItem(id: Long, item: Item): Response<Item> =
         withContext(Dispatchers.IO) {
+//            saveItemToLocal(item)    //updating the local database
             itemService.updateItemAsync(id, item).await()
     }
 
     suspend fun deleteItem(id: Long): Response<Void> =
         withContext(Dispatchers.IO) {
+//            deleteItemFromLocal(id)
             itemService.deleteItemAsync(id).await()
     }
-
 
 }

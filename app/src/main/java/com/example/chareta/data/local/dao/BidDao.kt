@@ -2,7 +2,7 @@ package com.example.chareta.data.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.chareta.data.local.model.Bid
+import com.example.chareta.data.model.Bid
 
 @Dao
 interface BidDao {
@@ -15,5 +15,8 @@ interface BidDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBid(bid: Bid)
+
+    @Query("DELETE FROM bids WHERE id = :bidId")
+    fun deleteBidById(bidId: Long)
 
 }

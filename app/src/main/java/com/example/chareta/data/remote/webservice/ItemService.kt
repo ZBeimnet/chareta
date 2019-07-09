@@ -1,11 +1,10 @@
 package com.example.chareta.data.remote.webservice
 
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.ItemsWrapper
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
-import java.util.*
 
 
 interface  ItemService {
@@ -25,6 +24,6 @@ interface  ItemService {
     @PUT("items/{id}")
     fun updateItemAsync(@Path("id") id: Long, @Body item: Item): Deferred<Response<Item>>
 
-    @DELETE("items/id")
+    @DELETE("items/{id}")
     fun deleteItemAsync(@Path("id") id: Long): Deferred<Response<Void>>
 }

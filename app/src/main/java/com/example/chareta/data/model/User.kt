@@ -1,11 +1,14 @@
-package com.example.chareta.data.remote.model
+package com.example.chareta.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "users")
 data class User (
 
     @SerializedName("id")
-    val id: Long,
+    @PrimaryKey val id: Long,
 
     @SerializedName("user_name")
     val user_name: String,

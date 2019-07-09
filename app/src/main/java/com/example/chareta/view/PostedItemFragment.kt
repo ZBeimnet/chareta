@@ -3,6 +3,7 @@ package com.example.chareta.view
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,16 +13,17 @@ import com.example.chareta.adapter.ItemRecyclerAdapter
 import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.repository.ScalarRepository
+import com.example.chareta.viewmodel.BidViewModel
 import com.example.chareta.viewmodel.ItemViewModel
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 
 @Suppress("PLUGIN_WARNING")
 class PostedItemFragment: Fragment() {
-
+lateinit var binding:com.example.chareta.databinding.PostedItemFragmentBinding
     private lateinit var itemViewModel: ItemViewModel
     private lateinit var userViewModel: UserViewModel
 
@@ -40,6 +42,12 @@ class PostedItemFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.posted_item_fragment, container, false)
+        val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.posted_item_fragment,container,false)
+        binding.PostedItem=viewModel
+        binding.executePendingBindings()
+        return binding.root
+
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
 
@@ -48,12 +56,10 @@ class PostedItemFragment: Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
         recyclerView = view.recycler_view
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext()) as RecyclerView.LayoutManager?
         recyclerView.setHasFixedSize(true)
 //        val adapter = ItemRecyclerAdapter()
 //        recyclerView.adapter = adapter
-
-
         val scalarRepository = ScalarRepository()
 
         if(isConnected!!) {
@@ -65,6 +71,14 @@ class PostedItemFragment: Fragment() {
                     ItemRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
             })
         }
+
+//        else {
+//            itemViewModel.getItemsFromLocal().observe(this, Observer {
+//                val items = ItemsWrapper(ItemsWrapper.ItemList(it))
+//                recyclerView.adapter =
+//                    ItemRecyclerAdapter(items, activity.supportFragmentManager)
+//            })
+//        }
 
       return view
     }

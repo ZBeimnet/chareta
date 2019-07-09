@@ -1,4 +1,4 @@
-package com.example.chareta.data.remote.webservice
+package com.example.chareta.data.remote
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
@@ -8,12 +8,8 @@ class ServiceBuilder {
 
     companion object {
         private val retrofit = Retrofit.Builder()
-
-
 //            .baseUrl("http://10.0.2.2:8080/")
-
             .baseUrl("http://192.168.43.137:8080/")
-
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()

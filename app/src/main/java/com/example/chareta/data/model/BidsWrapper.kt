@@ -1,4 +1,4 @@
-package com.example.chareta.data.remote.model
+package com.example.chareta.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -6,12 +6,12 @@ import com.google.gson.annotations.SerializedName
 class BidsWrapper (
     @SerializedName("_embedded")
     @Expose
-    val embeddedItems: BidList
+    val embeddedBids: BidList
     ) {
 
     data class BidList(
         @SerializedName("bids")
         @Expose
-        val allItems: List<Bid>
+        val allBids: List<Bid>
     )
 }

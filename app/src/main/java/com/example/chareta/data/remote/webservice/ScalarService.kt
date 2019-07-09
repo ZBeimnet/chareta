@@ -8,6 +8,6 @@ interface ScalarService {
 
     @Headers("Content-Type: text/uri-list")
     @PUT("items/{id}/user")
-    fun addBelongingToItem(@Body uri: String, @Path("id") itemId: Long): Deferred<Response<Void>>
+    fun addBelongingToItemAsync(@Body uri: String, @Path("id") itemId: Long): Deferred<Response<Void>>
 }
 
