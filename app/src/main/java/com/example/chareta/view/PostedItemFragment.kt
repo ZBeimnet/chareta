@@ -65,7 +65,8 @@ class PostedItemFragment: Fragment() {
         }
 
 //        else {
-//            itemViewModel.getItemsFromLocal().observe(this, Observer {
+//            itemViewModel.getItemsFromLocal()
+//            itemViewModel.getLocalResponse.observe(this, Observer {
 //                val items = ItemsWrapper(ItemsWrapper.ItemList(it))
 //                recyclerView.adapter =
 //                    ItemRecyclerAdapter(items, activity.supportFragmentManager)

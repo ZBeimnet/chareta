@@ -56,7 +56,7 @@ class ItemRepository(private val itemService: ItemService, private val itemDao: 
             itemService.getItemsByUserIdAsync(id).await()
     }
 
-    suspend fun insertItem(item: Item): Response<Item> =
+    suspend fun insertItem(item: Item): Response<Void> =
         withContext(Dispatchers.IO) {
 //            saveItemToLocal(item)   //updating the local database
             itemService.insertItemAsync(item).await()

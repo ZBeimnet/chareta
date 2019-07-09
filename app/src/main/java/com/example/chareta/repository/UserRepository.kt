@@ -36,7 +36,7 @@ class UserRepository(private val userService: UserService, private val userDao: 
             userService.getUserAsync(id).await()
     }
 
-    suspend fun insertUser(user: User): Response<User> =
+    suspend fun insertUser(user: User): Response<Void> =
         withContext(Dispatchers.IO) {
             userService.insertUserAsync(user).await()
     }

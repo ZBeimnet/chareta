@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
 import com.example.chareta.data.model.Bid
@@ -14,7 +13,7 @@ import com.example.chareta.viewmodel.BidViewModel
 class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewModel: BidViewModel):
     RecyclerView.Adapter<BidRecyclerAdapter.BidViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidRecyclerAdapter.BidViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val recyclerViewItem = inflater.inflate(R.layout.bids_card_view, parent, false)
         return BidViewHolder(recyclerViewItem)
@@ -24,7 +23,7 @@ class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewMode
         return allBids.size
     }
 
-    override fun onBindViewHolder(holder: BidRecyclerAdapter.BidViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BidViewHolder, position: Int) {
         val bid = allBids[position]
         val amount = "Bid Amount: " + bid.bid_amount.toString()
         val date = "Bid date: " + bid.bid_date

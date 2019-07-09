@@ -16,7 +16,7 @@ interface UserService {
     fun getUserAsync(@Path("id") id: Long): Deferred<Response<User>>
 
     @POST("users")
-    fun insertUserAsync(@Body newUser: User): Deferred<Response<User>>
+    fun insertUserAsync(@Body newUser: User): Deferred<Response<Void>>
 
     @PUT("users/{id}")
     fun updateUserAsync(@Path("id") id: Long, @Body user: User): Deferred<Response<User>>

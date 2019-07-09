@@ -53,7 +53,7 @@ class BidRepository(private val bidService: BidService, private val bidDao: BidD
             bidService.getBidsByItemIdAsync(id).await()
         }
 
-    suspend fun insertBid(bid: Bid): Response<Bid> =
+    suspend fun insertBid(bid: Bid): Response<Void> =
         withContext(Dispatchers.IO) {
 //            saveBidToLocal(bid)
             bidService.insertBidAsync(bid).await()

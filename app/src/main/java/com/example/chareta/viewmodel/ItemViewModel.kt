@@ -44,13 +44,17 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     val updateResponse: LiveData<Response<Item>>
         get() = _updateResponse
 
-    private val _insertResponse = MutableLiveData<Response<Item>>()
-    val insertResponse: LiveData<Response<Item>>
+    private val _insertResponse = MutableLiveData<Response<Void>>()
+    val insertResponse: LiveData<Response<Void>>
         get() = _insertResponse
 
     private val _deleteResponse = MutableLiveData<Response<Void>>()
     val deleteResponse: MutableLiveData<Response<Void>>
         get() = _deleteResponse
+
+    private val _getLocalResponse = MutableLiveData<List<Item>>()
+    val getLocalResponse: MutableLiveData<List<Item>>
+        get() = _getLocalResponse
 
 
     fun getItems() = viewModelScope.launch {
@@ -77,16 +81,9 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         _deleteResponse.postValue(itemRepository.deleteItem(id))
     }
 
-    fun getItemsFromLocal(): LiveData<List<Item>> {
-        val items: MutableLiveData<List<Item>> = MutableLiveData<List<Item>>()
+    fun getItemsFromLocal() =
         viewModelScope.launch {
-            val allItems = itemRepository.getItemsFromLocal()
-            withContext(Dispatchers.Main) {
-                items.value = allItems.value
-            }
-        }
-
-        return items
+            _getLocalResponse.postValue(itemRepository.getItemsFromLocal().value)
     }
 
 }

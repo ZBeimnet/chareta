@@ -18,7 +18,7 @@ interface BidService {
     fun getBidsByItemIdAsync(@Path("id") id: Long): Deferred<Response<List<Bid>>>
 
     @POST("bids")
-    fun insertBidAsync(@Body bid: Bid): Deferred<Response<Bid>>
+    fun insertBidAsync(@Body bid: Bid): Deferred<Response<Void>>
 
     @PUT("bids/{id}")
     fun updateBidAsync(@Path("id") id: Long, @Body bid: Bid): Deferred<Response<Bid>>

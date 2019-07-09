@@ -19,7 +19,7 @@ interface  ItemService {
     fun getItemsByUserIdAsync(@Path("id") id: Long): Deferred<Response<ItemsWrapper>>
 
     @POST("items")
-    fun insertItemAsync(@Body newItem: Item): Deferred<Response<Item>>
+    fun insertItemAsync(@Body newItem: Item): Deferred<Response<Void>>
 
     @PUT("items/{id}")
     fun updateItemAsync(@Path("id") id: Long, @Body item: Item): Deferred<Response<Item>>

@@ -36,8 +36,8 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     val updateResponse: LiveData<Response<User>>
         get() = _updateResponse
 
-    private val _insertResponse = MutableLiveData<Response<User>>()
-    val insertResponse: LiveData<Response<User>>
+    private val _insertResponse = MutableLiveData<Response<Void>>()
+    val insertResponse: LiveData<Response<Void>>
         get() = _insertResponse
 
     private val _deleteResponse = MutableLiveData<Response<Void>>()

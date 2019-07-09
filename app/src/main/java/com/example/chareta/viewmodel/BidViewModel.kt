@@ -42,8 +42,8 @@ class BidViewModel(application: Application): AndroidViewModel(application) {
     val updateResponse: LiveData<Response<Bid>>
         get() = _updateResponse
 
-    private val _insertResponse = MutableLiveData<Response<Bid>>()
-    val insertResponse: LiveData<Response<Bid>>
+    private val _insertResponse = MutableLiveData<Response<Void>>()
+    val insertResponse: LiveData<Response<Void>>
         get() = _insertResponse
 
     private val _deleteResponse = MutableLiveData<Response<Void>>()
