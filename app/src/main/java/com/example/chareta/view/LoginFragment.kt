@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
         val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater,R.layout.login_fragment,container,false)
         binding.userViewModel=viewModel
-
+        binding.executePendingBindings()
         return binding.root
 
         val activity = activity as MainActivity?
