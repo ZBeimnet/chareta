@@ -1,16 +1,20 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.chareta.R
 import com.example.chareta.data.local.CharetaDatabase
 import com.example.chareta.data.model.User
 import com.example.chareta.data.model.UsersWrapper
 import com.example.chareta.repository.UserRepository
 import com.example.chareta.data.remote.ServiceBuilder
 import com.example.chareta.data.remote.webservice.UserService
+import com.example.chareta.view.PostedItemFragment
+import com.example.chareta.view.RegisterFragment
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -64,7 +68,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     fun deleteUser(id: Long) = viewModelScope.launch {
         _deleteResponse.postValue(userRepository.deleteUser(id))
     }
- /*@Bindable
+ @Bindable
  val username = MutableLiveData<String>()
   @Bindable
   val password = MutableLiveData<String>()
@@ -97,7 +101,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     }
     fun onBckButtonClicked(){
 
-    }*/
+    }
 
 
 

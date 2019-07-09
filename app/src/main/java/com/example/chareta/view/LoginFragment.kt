@@ -5,17 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
+import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class LoginFragment : Fragment() {
-
+    lateinit var binding: com.example.chareta.databinding.LoginFragmentBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
+        val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.login_fragment,container,false)
+        binding.userViewModel=viewModel
+
+        return binding.root
 
         val activity = activity as MainActivity?
         activity?.hideBottomBar(true)
