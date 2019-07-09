@@ -26,7 +26,7 @@ class ScalarRepository {
 
     fun addBelongingToItem(uri: String, itemId: Long) {
         GlobalScope.launch(Dispatchers.IO) {
-            val response: Response<Void> = scalarService.addBelongingToItem(uri, itemId).await()
+            val response: Response<Void> = scalarService.addBelongingToItemAsync(uri, itemId).await()
             Log.d("relationship_added", response.message())
         }
     }

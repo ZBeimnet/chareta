@@ -3,13 +3,15 @@ package com.example.chareta.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Bid
+import com.example.chareta.data.model.Bid
+import com.example.chareta.viewmodel.BidViewModel
 
-class BidRecyclerAdapter(private var allBids: List<Bid>, private var fm: FragmentManager):
+class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewModel: BidViewModel):
     RecyclerView.Adapter<BidRecyclerAdapter.BidViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidRecyclerAdapter.BidViewHolder {
@@ -24,13 +26,20 @@ class BidRecyclerAdapter(private var allBids: List<Bid>, private var fm: Fragmen
 
     override fun onBindViewHolder(holder: BidRecyclerAdapter.BidViewHolder, position: Int) {
         val bid = allBids[position]
-        holder.itemName.text = bid.bid_amount.toString()
-        holder.startingPrice.text = bid.bid_date.toString()
+        val amount = "Bid Amount: " + bid.bid_amount.toString()
+        val date = "Bid date: " + bid.bid_date
+        holder.bidAmount.text = amount
+        holder.bidDate.text = date
+
+        holder.deleteButton.setOnClickListener {
+            bidViewModel.deleteItem(bid.id)
+        }
     }
 
     class BidViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemName: TextView = itemView.findViewById(R.id.item_name_card_tv)
-        var startingPrice: TextView = itemView.findViewById(R.id.starting_price_card_tv)
+        var bidAmount: TextView = itemView.findViewById(R.id.bid_amount_bids)
+        var bidDate: TextView = itemView.findViewById(R.id.bid_date_bids)
+        val deleteButton: Button = itemView.findViewById(R.id.withdraw_button_bids)
     }
 
 }

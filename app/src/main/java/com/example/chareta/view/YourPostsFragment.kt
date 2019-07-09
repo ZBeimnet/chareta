@@ -43,7 +43,7 @@ class YourPostsFragment: Fragment() {
             itemViewModel.getItemsByUserId(1)
             itemViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
-                    ManageRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
+                    ManageRecyclerAdapter(it.body()!!, itemViewModel)
             })
         }
         return view

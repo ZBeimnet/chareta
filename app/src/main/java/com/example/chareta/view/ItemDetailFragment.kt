@@ -14,8 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Bid
-import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.model.Bid
+import com.example.chareta.data.model.Item
 import com.example.chareta.viewmodel.BidViewModel
 import com.example.chareta.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.item_detail_fragment.view.*
@@ -70,8 +70,9 @@ class ItemDetailFragment : Fragment() {
              (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
         }
         bidbtn.setOnClickListener {
-            bidViewModel.insertBid(Bid(0, bidEditText.text.toString().toLong(), Date()))
+            bidViewModel.insertBid(Bid(0, bidEditText.text.toString().toLong(), java.util.Date().toString()))
             Toast.makeText(context, "Bid added", Toast.LENGTH_LONG).show()
+            bidEditText.setText("")
         }
         return view
     }

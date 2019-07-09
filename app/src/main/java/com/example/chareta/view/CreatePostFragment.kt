@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Item
+import com.example.chareta.data.model.Item
 import com.example.chareta.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.create_post_fragment.view.*
 

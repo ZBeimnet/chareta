@@ -1,16 +1,16 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import com.example.chareta.data.local.CharetaDatabase
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.repository.ItemRepository
 import com.example.chareta.data.remote.webservice.ItemService
-import com.example.chareta.data.remote.webservice.ServiceBuilder
+import com.example.chareta.data.remote.ServiceBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -18,11 +18,14 @@ import retrofit2.Response
 
 class ItemViewModel(application: Application): AndroidViewModel(application) {
 
+
+
     private val itemRepository: ItemRepository
 
     init {
         val itemService = ServiceBuilder.buildService(ItemService::class.java)
-        itemRepository = ItemRepository(itemService)
+        val itemDao = CharetaDatabase.getDatabase(application).itemDao()
+        itemRepository = ItemRepository(itemService, itemDao)
     }
 
     private  val _getResponse = MutableLiveData<Response<Item>>()
@@ -72,6 +75,18 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
 
     fun deleteItem(id: Long) = viewModelScope.launch {
         _deleteResponse.postValue(itemRepository.deleteItem(id))
+    }
+
+    fun getItemsFromLocal(): LiveData<List<Item>> {
+        val items: MutableLiveData<List<Item>> = MutableLiveData<List<Item>>()
+        viewModelScope.launch {
+            val allItems = itemRepository.getItemsFromLocal()
+            withContext(Dispatchers.Main) {
+                items.value = allItems.value
+            }
+        }
+
+        return items
     }
 
 }

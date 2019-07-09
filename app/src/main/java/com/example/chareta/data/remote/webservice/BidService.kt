@@ -1,7 +1,7 @@
 package com.example.chareta.data.remote.webservice
 
-import com.example.chareta.data.remote.model.Bid
-import com.example.chareta.data.remote.model.BidsWrapper
+import com.example.chareta.data.model.Bid
+import com.example.chareta.data.model.BidsWrapper
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*

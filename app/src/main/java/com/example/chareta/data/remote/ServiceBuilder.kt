@@ -1,4 +1,4 @@
-package com.example.chareta.data.remote.webservice
+package com.example.chareta.data.remote
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit

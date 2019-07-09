@@ -12,10 +12,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.User
+import com.example.chareta.data.model.User
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
-import androidx.databinding.DataBindingUtil
 
 class RegisterFragment: Fragment() {
    // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding

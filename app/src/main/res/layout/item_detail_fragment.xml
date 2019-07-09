@@ -63,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/itemname_textview"/>
     <TextView
             android:id="@+id/item_description"
-            android:layout_width="328dp"
+            android:layout_width="0dp"
             android:layout_height="59dp"
             android:hint="@string/item_description"
 

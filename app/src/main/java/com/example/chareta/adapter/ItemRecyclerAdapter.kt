@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.view.ItemDetailFragment
 
 

@@ -12,8 +12,8 @@ import com.example.chareta.adapter.ItemRecyclerAdapter
 import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
-import com.example.chareta.data.remote.model.Item
-import com.example.chareta.data.remote.model.ItemsWrapper
+import com.example.chareta.data.model.Item
+import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.repository.ScalarRepository
 import com.example.chareta.viewmodel.ItemViewModel
 import com.example.chareta.viewmodel.UserViewModel
@@ -48,12 +48,10 @@ class PostedItemFragment: Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 
         recyclerView = view.recycler_view
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext()) as RecyclerView.LayoutManager?
         recyclerView.setHasFixedSize(true)
 //        val adapter = ItemRecyclerAdapter()
 //        recyclerView.adapter = adapter
-
-
         val scalarRepository = ScalarRepository()
 
         if(isConnected!!) {
@@ -65,6 +63,14 @@ class PostedItemFragment: Fragment() {
                     ItemRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
             })
         }
+
+//        else {
+//            itemViewModel.getItemsFromLocal().observe(this, Observer {
+//                val items = ItemsWrapper(ItemsWrapper.ItemList(it))
+//                recyclerView.adapter =
+//                    ItemRecyclerAdapter(items, activity.supportFragmentManager)
+//            })
+//        }
 
       return view
     }
