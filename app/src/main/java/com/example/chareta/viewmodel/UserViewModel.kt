@@ -71,13 +71,21 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
  @Bindable
  val username = MutableLiveData<String>()
   @Bindable
+
   val password = MutableLiveData<String>()
+    @Bindable
+    val userUsername = MutableLiveData<String>()
+    @Bindable
+    val userPassword = MutableLiveData<String>()
    @Bindable
-   val phoneno= MutableLiveData<String>()
+
+   val userPhoneno= MutableLiveData<String>()
     @Bindable
-    val address = MutableLiveData<String>()
+    val userAddress = MutableLiveData<String>()
     @Bindable
-    val confirmPassword = MutableLiveData<String>()
+    val userConfirmPassword = MutableLiveData<String>()
+    @Bindable
+    val registerConfirmation = MutableLiveData<String>()
    fun cancelButtonClicked(){
 
    }
@@ -99,7 +107,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     fun onRegisterButtonClicked(){
 
     }
-    fun onBckButtonClicked(){
+    fun onBackButtonClicked(){
 
     }
 
