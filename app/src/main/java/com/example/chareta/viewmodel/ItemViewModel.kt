@@ -1,16 +1,21 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
+import android.app.DatePickerDialog
+import android.widget.Toast
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.chareta.NavigationHost
 import com.example.chareta.data.local.CharetaDatabase
 import com.example.chareta.data.model.Item
 import com.example.chareta.data.model.ItemsWrapper
 import com.example.chareta.repository.ItemRepository
 import com.example.chareta.data.remote.webservice.ItemService
 import com.example.chareta.data.remote.ServiceBuilder
+import com.example.chareta.view.PostedItemFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -27,6 +32,47 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
         val itemDao = CharetaDatabase.getDatabase(application).itemDao()
         itemRepository = ItemRepository(itemService, itemDao)
     }
+    @Bindable
+    val itemName = MutableLiveData<String>()
+
+    @Bindable
+    val itemStartingPrice = MutableLiveData<String>()
+
+    @Bindable
+    val itemDescription = MutableLiveData<String>()
+
+    @Bindable
+    val expiryDate = MutableLiveData<String>()
+
+
+    fun onPickDateButtonClicked(){
+        val c = java.util.Calendar.getInstance()
+        val year = c.get(java.util.Calendar.YEAR)
+        val month = c.get(java.util.Calendar.MONTH)
+        val day = c.get(java.util.Calendar.DAY_OF_MONTH)
+        val dpd =
+            DatePickerDialog(getApplication(), DatePickerDialog.OnDateSetListener { view, myear, mmonth, mday ->
+                expiryDate
+
+            }, year, month, day)
+        dpd.show()
+
+    }
+
+    fun onPostButtonClicked(){
+
+            insertItem(Item(0,itemName.toString(),itemDescription.toString(),itemStartingPrice.toString().toLong(),java.util.Date().toString(),expiryDate.toString()))
+
+            Toast.makeText(getApplication(), "Post added", Toast.LENGTH_LONG).show()
+
+    }
+    fun onBackButtonClicked(){
+
+    }
+
+
+
+
 
     private  val _getResponse = MutableLiveData<Response<Item>>()
     val getResponse: LiveData<Response<Item>>
