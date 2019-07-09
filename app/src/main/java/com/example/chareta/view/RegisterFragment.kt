@@ -41,7 +41,7 @@ class RegisterFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.register_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.login_fragment,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.register_fragment,container,false)
         binding.userViewModel=viewModel
         binding.executePendingBindings()
         return binding.root

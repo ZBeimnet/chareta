@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.MainActivity
@@ -19,6 +20,7 @@ import com.example.chareta.NavigationHost
 import com.example.chareta.R
 import com.example.chareta.data.model.Item
 import com.example.chareta.viewmodel.ItemViewModel
+import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.create_post_fragment.view.*
 
 
@@ -30,6 +32,7 @@ class CreatePostFragment : Fragment() {
     lateinit var postbtn: Button
     lateinit var expirydate:TextView
     lateinit var postdate_btn:Button
+    lateinit var binding:com.example.chareta.databinding.CreatePostFragmentBinding
     @RequiresApi(Build.VERSION_CODES.O)
 fun clearFields(){
         itemname.setText("")
@@ -42,6 +45,11 @@ fun clearFields(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
+        val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.create_post_fragment,container,false)
+        binding.itemViewModel=viewModel
+        binding.executePendingBindings()
+        return binding.root
         val activity = activity as MainActivity?
         activity?.hideBottomBar(true)
         itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
