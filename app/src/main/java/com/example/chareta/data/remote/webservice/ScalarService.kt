@@ -6,6 +6,8 @@ import retrofit2.http.*
 
 interface ScalarService {
 
+    //This Service Class is only to handle relationships between models
+
     @Headers("Content-Type: text/uri-list")
     @PUT("items/{id}/user")
     fun addBelongingToItemAsync(@Body uri: String, @Path("id") itemId: Long): Deferred<Response<Void>>

@@ -30,18 +30,18 @@ class BidRepository(private val bidService: BidService, private val bidDao: BidD
         bidDao.deleteBidById(bidId)
     }
 
-    suspend fun getBids(): Response<BidsWrapper> =
-//        lateinit var bids: Response<BidsWrapper>
+    suspend fun getBids(): Response<BidsWrapper> {
+        lateinit var bids: Response<BidsWrapper>
         withContext(Dispatchers.IO) {
-            bidService.getBidsAsync().await()
-//            saveBidsToLocal(allBids.body()!!.embeddedBids.allBids)     //saving bids to local
-//            withContext(Dispatchers.Main) {
-//                bids = allBids
-//            }
+            val allBids = bidService.getBidsAsync().await()
+            saveBidsToLocal(allBids.body()!!.embeddedBids.allBids)     //saving bids to local
+            withContext(Dispatchers.Main) {
+                bids = allBids
+            }
         }
 
-//        return bids
-//    }
+        return bids
+    }
 
     suspend fun getBidById(id: Long): Response<Bid> =
         withContext(Dispatchers.IO) {
@@ -55,19 +55,19 @@ class BidRepository(private val bidService: BidService, private val bidDao: BidD
 
     suspend fun insertBid(bid: Bid): Response<Void> =
         withContext(Dispatchers.IO) {
-//            saveBidToLocal(bid)
+            saveBidToLocal(bid)
             bidService.insertBidAsync(bid).await()
         }
 
     suspend fun updateItem(id: Long, bid: Bid): Response<Bid> =
         withContext(Dispatchers.IO) {
-//            saveBidToLocal(bid)
+            saveBidToLocal(bid)
             bidService.updateBidAsync(id, bid).await()
         }
 
     suspend fun deleteItem(id: Long): Response<Void> =
         withContext(Dispatchers.IO) {
-//            deleteBidFromLocal(id)
+            deleteBidFromLocal(id)
             bidService.deleteBidAsync(id).await()
         }
 }

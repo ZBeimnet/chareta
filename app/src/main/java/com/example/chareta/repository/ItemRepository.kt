@@ -40,8 +40,9 @@ class ItemRepository(private val itemService: ItemService, private val itemDao: 
                 items = allItems
             }
         }
-        val i: Int = items.body()!!.embeddedItems.allItems.size
-        Log.d("items", i.toString() )
+        val x = items.body()!!.embeddedItems.allItems.size
+        val i: String = items.body()!!.embeddedItems.allItems[x-1].item_name
+        Log.d("items", i )
 
         return items
     }
@@ -58,19 +59,19 @@ class ItemRepository(private val itemService: ItemService, private val itemDao: 
 
     suspend fun insertItem(item: Item): Response<Void> =
         withContext(Dispatchers.IO) {
-//            saveItemToLocal(item)   //updating the local database
+            saveItemToLocal(item)   //updating the local database
             itemService.insertItemAsync(item).await()
     }
 
     suspend fun updateItem(id: Long, item: Item): Response<Item> =
         withContext(Dispatchers.IO) {
-//            saveItemToLocal(item)    //updating the local database
+            saveItemToLocal(item)    //updating the local database
             itemService.updateItemAsync(id, item).await()
     }
 
     suspend fun deleteItem(id: Long): Response<Void> =
         withContext(Dispatchers.IO) {
-//            deleteItemFromLocal(id)
+            deleteItemFromLocal(id)
             itemService.deleteItemAsync(id).await()
     }
 

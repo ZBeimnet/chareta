@@ -12,6 +12,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class ScalarRepository {
 
+    //This repository is only used to handle relationship between models
+
     private val scalarService: ScalarService
 
     init {

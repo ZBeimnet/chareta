@@ -17,6 +17,10 @@ class UserRepository(private val userService: UserService, private val userDao: 
         }
     }
 
+    private fun saveUserToLocal(user: User) {
+        userDao.insertUser(user)
+    }
+
     suspend fun getUserFromLocal(): LiveData<List<User>> =
         withContext(Dispatchers.IO) {
             userDao.getUsers()
@@ -26,9 +30,17 @@ class UserRepository(private val userService: UserService, private val userDao: 
         userDao.deleteUserById(userId)
     }
 
-    suspend fun getUsers(): Response<UsersWrapper> =
+    suspend fun getUsers(): Response<UsersWrapper> {
+        lateinit var users: Response<UsersWrapper>
         withContext(Dispatchers.IO) {
-            userService.getUsersAsync().await()
+            val allUsers = userService.getUsersAsync().await()
+            saveUsersToLocal(allUsers.body()!!.embeddedUsers.allUsers)
+            withContext(Dispatchers.Main){
+                users = allUsers
+            }
+        }
+
+        return users
     }
 
     suspend fun getUserById(id: Long): Response<User> =
@@ -38,17 +50,19 @@ class UserRepository(private val userService: UserService, private val userDao: 
 
     suspend fun insertUser(user: User): Response<Void> =
         withContext(Dispatchers.IO) {
+            saveUserToLocal(user)
             userService.insertUserAsync(user).await()
     }
 
     suspend fun updateUser(id: Long, user: User): Response<User> =
         withContext(Dispatchers.IO) {
+            saveUserToLocal(user)
             userService.updateUserAsync(id, user).await()
     }
 
     suspend fun deleteUser(id: Long): Response<Void> =
         withContext(Dispatchers.IO) {
-//            deleteUserFromLocal(id)
+            deleteUserFromLocal(id)
             userService.deleteUserAsync(id).await()
     }
 }
