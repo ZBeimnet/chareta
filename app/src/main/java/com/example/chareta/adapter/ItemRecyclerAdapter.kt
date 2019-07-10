@@ -16,12 +16,12 @@ import com.example.chareta.view.ItemDetailFragment
 
 class ItemRecyclerAdapter(private var allItems: ItemsWrapper, private var fm: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
+    lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         val recyclerViewItem = inflater.inflate(R.layout.item_card_view, parent, false)
-        binding = DataBindingUtil.inflate(inflater,R.layout.item_card_view,parent,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.item_card_view, parent, false)
         return ItemViewHolder(binding)
     }
 
@@ -29,6 +29,7 @@ lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
         Log.d("Recycler View Adapter", allItems.embeddedItems.allItems.size.toString())
         return allItems.embeddedItems.allItems.size
     }
+
     fun setData(newItem: ItemsWrapper) {
         this.allItems = newItem
         notifyDataSetChanged()
@@ -41,7 +42,7 @@ lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
         holder.expiryDate.text = item.expiry_date
 
         holder.itemView.setOnClickListener {
-              fm.beginTransaction()
+            fm.beginTransaction()
                 .replace(R.id.container, ItemDetailFragment.newInstance(allItems.embeddedItems.allItems[position].id))
                 .addToBackStack(null)
                 .commit()

@@ -51,6 +51,14 @@ class YourPostsFragment: Fragment() {
                     ManageRecyclerAdapter(it.body()!!, itemViewModel)
             })
         }
+
+        else {
+            itemViewModel.getItemsFromLocal()
+            itemViewModel.getResponses.observe(this, Observer {
+                recyclerView.adapter =
+                        ManageRecyclerAdapter(it.body()!!, itemViewModel)
+            })
+        }
         return view
     }
 

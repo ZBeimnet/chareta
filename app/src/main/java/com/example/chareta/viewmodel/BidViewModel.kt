@@ -64,6 +64,10 @@ class BidViewModel(application: Application) : AndroidViewModel(application) {
     val deleteResponse: MutableLiveData<Response<Void>>
         get() = _deleteResponse
 
+    private val _getLocalResponse = MutableLiveData<List<Bid>>()
+    val getLocalResponse: MutableLiveData<List<Bid>>
+        get() = _getLocalResponse
+
     fun getBids() = viewModelScope.launch {
         _getResponses.postValue(bidRepository.getBids())
     }
@@ -88,15 +92,10 @@ class BidViewModel(application: Application) : AndroidViewModel(application) {
         _deleteResponse.postValue(bidRepository.deleteItem(id))
     }
 
-    fun getBidsFromLocal(): LiveData<List<Bid>> {
-        lateinit var bids: LiveData<List<Bid>>
+    fun getBidsFromLocal() =
         viewModelScope.launch {
-            val allBids = bidRepository.getBidsFromLocal()
-            withContext(Dispatchers.Main) {
-                bids = allBids
-            }
-        }
-        return bids
+            _getLocalResponse.postValue(bidRepository.getBidsFromLocal().value)
+
     }
 
 }

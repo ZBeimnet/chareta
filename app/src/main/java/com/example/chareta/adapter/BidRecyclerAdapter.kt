@@ -12,14 +12,14 @@ import com.example.chareta.R
 import com.example.chareta.data.model.Bid
 import com.example.chareta.viewmodel.BidViewModel
 
-class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewModel: BidViewModel):
-    RecyclerView.Adapter<BidRecyclerAdapter.BidViewHolder>(){
+class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewModel: BidViewModel) :
+    RecyclerView.Adapter<BidRecyclerAdapter.BidViewHolder>() {
 
     lateinit var binding: com.example.chareta.databinding.YourBidsFragmentBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val recyclerViewItem = inflater.inflate(R.layout.bids_card_view, parent, false)
-        binding = DataBindingUtil.inflate(inflater,R.layout.bids_card_view,parent,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.bids_card_view, parent, false)
         return BidViewHolder(binding)
     }
 

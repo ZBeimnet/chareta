@@ -22,8 +22,8 @@ import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 
 @Suppress("PLUGIN_WARNING")
-class PostedItemFragment: Fragment() {
-lateinit var binding:com.example.chareta.databinding.PostedItemFragmentBinding
+class PostedItemFragment : Fragment() {
+    lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
     private lateinit var itemViewModel: ItemViewModel
     private lateinit var userViewModel: UserViewModel
 
@@ -43,8 +43,8 @@ lateinit var binding:com.example.chareta.databinding.PostedItemFragmentBinding
 
         val view = inflater.inflate(R.layout.posted_item_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.posted_item_fragment,container,false)
-        binding.PostedItem=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.posted_item_fragment, container, false)
+        binding.PostedItem = viewModel
         binding.executePendingBindings()
         return binding.root
 
@@ -58,39 +58,40 @@ lateinit var binding:com.example.chareta.databinding.PostedItemFragmentBinding
         recyclerView = view.recycler_view
         recyclerView.layoutManager = LinearLayoutManager(requireContext()) as RecyclerView.LayoutManager?
         recyclerView.setHasFixedSize(true)
-//        val adapter = ItemRecyclerAdapter()
-//        recyclerView.adapter = adapter
+
         val scalarRepository = ScalarRepository()
 
-        if(isConnected!!) {
+        if (isConnected!!) {
 //            scalarRepository.addBelongingToItem( "Http://localhost:8080/users/2" , 5)
             itemViewModel.getItems()
             itemViewModel.getResponses.observe(this, Observer {
-//                adapter.setData(it)
+                //                adapter.setData(it)
                 recyclerView.adapter =
                     ItemRecyclerAdapter(it.body()!!, activity.supportFragmentManager)
             })
+        } else {
+            itemViewModel.getItemsFromLocal()
+            itemViewModel.getLocalResponse.observe(this, Observer {
+                val items = ItemsWrapper(ItemsWrapper.ItemList(it))
+                recyclerView.adapter =
+                    ItemRecyclerAdapter(items, activity.supportFragmentManager)
+            })
         }
 
-//        else {
-//            itemViewModel.getItemsFromLocal()
-//            itemViewModel.getLocalResponse.observe(this, Observer {
-//                val items = ItemsWrapper(ItemsWrapper.ItemList(it))
-//                recyclerView.adapter =
-//                    ItemRecyclerAdapter(items, activity.supportFragmentManager)
-//            })
-//        }
-
-      return view
+        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
+        when (item.itemId) {
+            R.id.post_item -> (activity as NavigationHost).navigateTo(
+                CreatePostFragment(),
+                true
+            ) // Navigate to the next Fragment
             R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)
         }
 

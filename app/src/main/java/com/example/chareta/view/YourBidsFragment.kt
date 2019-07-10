@@ -13,6 +13,7 @@ import com.example.chareta.MainActivity
 import com.example.chareta.NavigationHost
 import com.example.chareta.R
 import com.example.chareta.adapter.BidRecyclerAdapter
+import com.example.chareta.data.model.BidsWrapper
 import com.example.chareta.viewmodel.BidViewModel
 import com.example.chareta.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
@@ -53,6 +54,13 @@ class YourBidsFragment: Fragment() {
             bidViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
                     BidRecyclerAdapter(it.body()!!.embeddedBids.allBids, bidViewModel)
+            })
+        }
+        else {
+            bidViewModel.getBidsFromLocal()
+            bidViewModel.getLocalResponse.observe(this, Observer {
+                recyclerView.adapter =
+                        BidRecyclerAdapter(it, bidViewModel)
             })
         }
 
