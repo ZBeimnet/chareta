@@ -74,10 +74,10 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun onEditButtonClicked(){
-
+updateItem(0,Item(0,itemName.toString(),itemDescription.toString(),itemStartingPrice.toString().toLong(),java.util.Date().toString(),expiryDate.toString()))
     }
     fun onDeleteButtonClicked(){
-
+       deleteItem(0)
     }
 
 
