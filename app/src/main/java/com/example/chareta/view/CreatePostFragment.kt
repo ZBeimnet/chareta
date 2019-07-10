@@ -30,24 +30,25 @@ class CreatePostFragment : Fragment() {
     lateinit var startingprice: EditText
     lateinit var backbtn: Button
     lateinit var postbtn: Button
-    lateinit var expirydate:TextView
-    lateinit var postdate_btn:Button
-    lateinit var binding:com.example.chareta.databinding.CreatePostFragmentBinding
+    lateinit var expirydate: TextView
+    lateinit var postdate_btn: Button
+    lateinit var binding: com.example.chareta.databinding.CreatePostFragmentBinding
     @RequiresApi(Build.VERSION_CODES.O)
-fun clearFields(){
+    fun clearFields() {
         itemname.setText("")
         itemdescription.setText("")
         startingprice.setText("")
     }
-    lateinit var itemViewModel:ItemViewModel
+
+    lateinit var itemViewModel: ItemViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.create_post_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.create_post_fragment,container,false)
-        binding.itemViewModel=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.create_post_fragment, container, false)
+        binding.itemViewModel = viewModel
         binding.executePendingBindings()
         return binding.root
         val activity = activity as MainActivity?
@@ -93,13 +94,14 @@ fun clearFields(){
         return view
     }
 
-        fun readFields()= Item(0, itemname.text.toString(),
-            itemdescription.text.toString(),
-            startingprice.text.toString().toLong(),
-            java.util.Date().toString(),
-            expirydate.text.toString())
+    fun readFields() = Item(
+        0, itemname.text.toString(),
+        itemdescription.text.toString(),
+        startingprice.text.toString().toLong(),
+        java.util.Date().toString(),
+        expirydate.text.toString()
+    )
 
 
-
-    }
+}
 

@@ -20,9 +20,9 @@ import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 import kotlinx.android.synthetic.main.posted_item_fragment.view.app_bar
 import kotlinx.android.synthetic.main.your_bids_fragment.view.*
 
-class YourBidsFragment: Fragment() {
+class YourBidsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    lateinit var binding:com.example.chareta.databinding.YourBidsFragmentBinding
+    lateinit var binding: com.example.chareta.databinding.YourBidsFragmentBinding
     private lateinit var bidViewModel: BidViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +35,8 @@ class YourBidsFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.your_bids_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.posted_item_fragment,container,false)
-        binding.PostedItem=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.posted_item_fragment, container, false)
+        binding.PostedItem = viewModel
         binding.executePendingBindings()
         return binding.root
         val activity = activity as MainActivity?
@@ -49,18 +49,17 @@ class YourBidsFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
-        if(isConnected!!) {
+        if (isConnected!!) {
             bidViewModel.getBids()
             bidViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
                     BidRecyclerAdapter(it.body()!!.embeddedBids.allBids, bidViewModel)
             })
-        }
-        else {
+        } else {
             bidViewModel.getBidsFromLocal()
             bidViewModel.getLocalResponse.observe(this, Observer {
                 recyclerView.adapter =
-                        BidRecyclerAdapter(it, bidViewModel)
+                    BidRecyclerAdapter(it, bidViewModel)
             })
         }
 
@@ -74,9 +73,12 @@ class YourBidsFragment: Fragment() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true)
-            R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)// Navigate to the next Fragment
+            R.id.logout -> (activity as NavigationHost).navigateTo(
+                LoginFragment(),
+                false
+            )// Navigate to the next Fragment
         }
 
         return super.onOptionsItemSelected(item)

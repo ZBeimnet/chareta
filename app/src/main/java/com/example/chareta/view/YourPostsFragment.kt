@@ -15,9 +15,9 @@ import com.example.chareta.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.posted_item_fragment.view.app_bar
 import kotlinx.android.synthetic.main.your_posts_fragment.view.*
 
-class YourPostsFragment: Fragment() {
+class YourPostsFragment : Fragment() {
     private lateinit var itemViewModel: ItemViewModel
-  lateinit var binding:YourPostsFragmentBinding
+    lateinit var binding: YourPostsFragmentBinding
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +30,8 @@ class YourPostsFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.your_posts_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.your_posts_fragment,container,false)
-        binding.itemViewModel=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.your_posts_fragment, container, false)
+        binding.itemViewModel = viewModel
         binding.executePendingBindings()
         return binding.root
         val activity = activity as MainActivity?
@@ -44,19 +44,17 @@ class YourPostsFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 
-        if(isConnected) {
+        if (isConnected) {
             itemViewModel.getItemsByUserId(1)
             itemViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
                     ManageRecyclerAdapter(it.body()!!, itemViewModel)
             })
-        }
-
-        else {
+        } else {
             itemViewModel.getItemsFromLocal()
             itemViewModel.getResponses.observe(this, Observer {
                 recyclerView.adapter =
-                        ManageRecyclerAdapter(it.body()!!, itemViewModel)
+                    ManageRecyclerAdapter(it.body()!!, itemViewModel)
             })
         }
         return view
@@ -68,9 +66,12 @@ class YourPostsFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
 
-            R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true) // Navigate to the next Fragment
+            R.id.post_item -> (activity as NavigationHost).navigateTo(
+                CreatePostFragment(),
+                true
+            ) // Navigate to the next Fragment
             R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)
         }
         return super.onOptionsItemSelected(item)

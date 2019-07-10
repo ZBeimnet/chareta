@@ -9,7 +9,7 @@ import com.example.chareta.NavigationHost
 import com.example.chareta.R
 import kotlinx.android.synthetic.main.posted_item_fragment.view.*
 
-class StatusFragment: Fragment() {
+class StatusFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +31,14 @@ class StatusFragment: Fragment() {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.post_item -> (activity as NavigationHost).navigateTo(CreatePostFragment(), true)
-            R.id.logout -> (activity as NavigationHost).navigateTo(LoginFragment(), false)// Navigate to the next Fragment
+            R.id.logout -> (activity as NavigationHost).navigateTo(
+                LoginFragment(),
+                false
+            )// Navigate to the next Fragment
         }
 
         return super.onOptionsItemSelected(item)

@@ -32,12 +32,12 @@ class ItemDetailFragment : Fragment() {
     private lateinit var bidViewModel: BidViewModel
 
     private lateinit var itemDetail: TextView
-    private lateinit var itemname:TextView
-    private lateinit var startingPrice:TextView
+    private lateinit var itemname: TextView
+    private lateinit var startingPrice: TextView
     private lateinit var bidEditText: EditText
     private lateinit var bidbtn: Button
-    private lateinit var backbtn:Button
-    lateinit var binding:com.example.chareta.databinding.ItemDetailFragmentBinding
+    private lateinit var backbtn: Button
+    lateinit var binding: com.example.chareta.databinding.ItemDetailFragmentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,8 +52,8 @@ class ItemDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.item_detail_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(BidViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.item_detail_fragment,container,false)
-        binding.bidViewModel=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.item_detail_fragment, container, false)
+        binding.bidViewModel = viewModel
         binding.executePendingBindings()
         return binding.root
         itemname = view.itemname_textview
@@ -74,7 +74,7 @@ class ItemDetailFragment : Fragment() {
         })
 
         backbtn.setOnClickListener {
-             (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
+            (activity as NavigationHost).navigateTo(PostedItemFragment(), false)
         }
         bidbtn.setOnClickListener {
             bidViewModel.insertBid(Bid(0, bidEditText.text.toString().toLong(), java.util.Date().toString()))
@@ -99,7 +99,7 @@ class ItemDetailFragment : Fragment() {
         fun newInstance(itemID: Long): ItemDetailFragment {
             val itemDetailFragment = ItemDetailFragment()
             val args = Bundle()
-            args.putLong("itemID",itemID)
+            args.putLong("itemID", itemID)
             itemDetailFragment.arguments = args
             return itemDetailFragment
         }

@@ -17,9 +17,9 @@ import com.example.chareta.data.model.User
 import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
 
-class RegisterFragment: Fragment() {
-    lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
-   // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
+class RegisterFragment : Fragment() {
+    lateinit var binding: com.example.chareta.databinding.RegisterFragmentBinding
+    // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
     private lateinit var userViewModel: UserViewModel
 
     private lateinit var userNameEditText: EditText
@@ -32,7 +32,7 @@ class RegisterFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-       // binding = DataBindingUtil.setContentView(requireActivity(), R.layout.register_fragment)
+        // binding = DataBindingUtil.setContentView(requireActivity(), R.layout.register_fragment)
         userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
     }
@@ -41,8 +41,8 @@ class RegisterFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.register_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.register_fragment,container,false)
-        binding.userViewModel=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.register_fragment, container, false)
+        binding.userViewModel = viewModel
         binding.executePendingBindings()
         return binding.root
 
@@ -52,9 +52,9 @@ class RegisterFragment: Fragment() {
         val isConnected = activity?.connected()
 
         /////
-    userNameEditText = view.register_username_edit_text
+        userNameEditText = view.register_username_edit_text
         phoneEditText = view.register_phone_edit_text
-       addressEditText = view.register_address_edit_text
+        addressEditText = view.register_address_edit_text
         passwordEditText = view.register_password_edit_text
         confirmEditText = view.confirm_password_edit_text
         registrationConfirmation = view.register_confirmation_text_view
@@ -79,24 +79,17 @@ class RegisterFragment: Fragment() {
         view.register_button.setOnClickListener {
 
 
-
-
-//            userViewModel.registerUser(readFields())
+            //            userViewModel.registerUser(readFields())
 //            clearFields()
 //            registrationConfirmation.text = "Successfully Registered!"
 
-            if(isConnected!!) {
+            if (isConnected!!) {
                 userViewModel.insertUser(readFields())
                 clearFields()
                 registrationConfirmation.text = "Successfully Registered!"
-            }
-            else {
+            } else {
                 registrationConfirmation.text = "Not connected to a network!"
             }
-
-
-
-
 
 
         }

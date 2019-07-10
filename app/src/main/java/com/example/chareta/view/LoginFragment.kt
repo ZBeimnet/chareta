@@ -20,8 +20,8 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
         val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater,R.layout.login_fragment,container,false)
-        binding.userViewModel=viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
+        binding.userViewModel = viewModel
         binding.executePendingBindings()
         return binding.root
 
@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
         activity?.hideBottomBar(true)
 
         view.login_button.setOnClickListener {
-//            Navigation.createNavigateOnClickListener(R.id.postedItemFragment)
+            //            Navigation.createNavigateOnClickListener(R.id.postedItemFragment)
             (activity as NavigationHost).navigateTo(PostedItemFragment(), true)
         }
 
