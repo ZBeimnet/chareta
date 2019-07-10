@@ -3,6 +3,7 @@ package com.example.chareta.view
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.your_bids_fragment.view.*
 
 class YourBidsFragment: Fragment() {
     private lateinit var recyclerView: RecyclerView
-
+    lateinit var binding:com.example.chareta.databinding.YourBidsFragmentBinding
     private lateinit var bidViewModel: BidViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,11 @@ class YourBidsFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.your_bids_fragment, container, false)
-
+        val viewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.posted_item_fragment,container,false)
+        binding.PostedItem=viewModel
+        binding.executePendingBindings()
+        return binding.root
         val activity = activity as MainActivity?
         activity?.hideBottomBar(false)
 

@@ -44,6 +44,9 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     @Bindable
     val expiryDate = MutableLiveData<String>()
 
+    @Bindable
+    val items = MutableLiveData<String>()
+
 
     fun onPickDateButtonClicked(){
         val c = java.util.Calendar.getInstance()
@@ -70,6 +73,12 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
 
     }
 
+    fun onEditButtonClicked(){
+
+    }
+    fun onDeleteButtonClicked(){
+
+    }
 
 
 
