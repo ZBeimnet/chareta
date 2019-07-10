@@ -5,20 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
 import com.example.chareta.data.model.ItemsWrapper
+import com.example.chareta.view.YourPostsFragment
 import com.example.chareta.viewmodel.ItemViewModel
 
 class ManageRecyclerAdapter(private var allItems: ItemsWrapper, private var itemViewModel: ItemViewModel):
     RecyclerView.Adapter<ManageRecyclerAdapter.ManageViewHolder>(){
-
+   lateinit var binding:YourPostsFragmentBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManageViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val recyclerViewItem = inflater.inflate(R.layout.manage_card_view, parent, false)
-        return ManageViewHolder(recyclerViewItem)
+        binding = DataBindingUtil.inflate(inflater,R.layout.manage_card_view,parent,false)
+        return ManageViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
