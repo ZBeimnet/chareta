@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
@@ -13,11 +14,12 @@ import com.example.chareta.viewmodel.BidViewModel
 
 class BidRecyclerAdapter(private var allBids: List<Bid>, private var bidViewModel: BidViewModel):
     RecyclerView.Adapter<BidRecyclerAdapter.BidViewHolder>(){
-
+     lateinit var binding: com.example.chareta.databinding.YourBidsFragmentBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidRecyclerAdapter.BidViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val recyclerViewItem = inflater.inflate(R.layout.bids_card_view, parent, false)
-        return BidViewHolder(recyclerViewItem)
+        binding = DataBindingUtil.inflate(inflater,R.layout.bids_card_view,parent,false)
+        return BidViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
