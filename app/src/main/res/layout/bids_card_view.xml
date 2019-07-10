@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="bidsItemViewModel" type="com.example.chareta.viewmodel.ItemViewModel"/>
+    </data>
+
 <com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginBottom="16dp"
@@ -21,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:text="@string/item_name"
+
+                android:text="@{bidsItemViewModel.itemName}"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
         <TextView
@@ -29,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:text="@string/starting_price"
+                android:text="@{bidsItemViewModel.itemStartingPrice}"
                 android:textAppearance="?attr/textAppearanceBody1" />
 
 
@@ -44,6 +50,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
+                    android:onClick="@{()->bidsItemViewModel.onEditButtonClicked()}"
                     android:text="@string/edit_button" />
 
             <com.google.android.material.button.MaterialButton
@@ -51,6 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
+                    android:onClick="@{()->bidsItemViewModel.onDeleteButtonClicked()}"
                     android:layout_marginRight="12dp"
                     android:layout_toStartOf="@id/edit_button_bids"
                     android:layout_toLeftOf="@id/edit_button_bids"
@@ -60,3 +68,4 @@
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
+</layout>

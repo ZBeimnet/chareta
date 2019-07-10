@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.NavigationHost
@@ -18,6 +19,7 @@ import com.example.chareta.data.model.Bid
 import com.example.chareta.data.model.Item
 import com.example.chareta.viewmodel.BidViewModel
 import com.example.chareta.viewmodel.ItemViewModel
+import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.item_detail_fragment.view.*
 import java.util.*
 
@@ -35,7 +37,7 @@ class ItemDetailFragment : Fragment() {
     private lateinit var bidEditText: EditText
     private lateinit var bidbtn: Button
     private lateinit var backbtn:Button
-
+    lateinit var binding:com.example.chareta.databinding.ItemDetailFragmentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,6 +51,11 @@ class ItemDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.item_detail_fragment, container, false)
+        val viewModel = ViewModelProviders.of(this).get(BidViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.item_detail_fragment,container,false)
+        binding.bidViewModel=viewModel
+        binding.executePendingBindings()
+        return binding.root
         itemname = view.itemname_textview
         itemDetail = view.item_description
         startingPrice = view.item_starting_price

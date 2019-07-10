@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chareta.R
@@ -15,11 +16,13 @@ import com.example.chareta.view.ItemDetailFragment
 
 class ItemRecyclerAdapter(private var allItems: ItemsWrapper, private var fm: FragmentManager) :
     RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>() {
-
+lateinit var binding: com.example.chareta.databinding.PostedItemFragmentBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+
         val recyclerViewItem = inflater.inflate(R.layout.item_card_view, parent, false)
-        return ItemViewHolder(recyclerViewItem)
+        binding = DataBindingUtil.inflate(inflater,R.layout.item_card_view,parent,false)
+        return ItemViewHolder(binding)
     }
 
     override fun getItemCount(): Int {

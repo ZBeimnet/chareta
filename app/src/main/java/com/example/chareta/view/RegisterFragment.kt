@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.chareta.MainActivity
@@ -17,6 +18,7 @@ import com.example.chareta.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.register_fragment.view.*
 
 class RegisterFragment: Fragment() {
+    lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
    // private lateinit var binding:com.example.chareta.databinding.RegisterFragmentBinding
     private lateinit var userViewModel: UserViewModel
 
@@ -38,6 +40,11 @@ class RegisterFragment: Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.register_fragment, container, false)
+        val viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.register_fragment,container,false)
+        binding.userViewModel=viewModel
+        binding.executePendingBindings()
+        return binding.root
 
         val activity = activity as MainActivity?
         activity?.hideBottomBar(true)

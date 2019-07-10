@@ -1,6 +1,7 @@
 package com.example.chareta.viewmodel
 
 import android.app.Application
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,9 +17,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class BidViewModel(application: Application): AndroidViewModel(application) {
+class BidViewModel(application: Application) : AndroidViewModel(application) {
 
     private val bidRepository: BidRepository
+
 
     init {
         val bidService = ServiceBuilder.buildService(BidService::class.java)
@@ -26,7 +28,19 @@ class BidViewModel(application: Application): AndroidViewModel(application) {
         bidRepository = BidRepository(bidService, bidDao)
     }
 
-    private  val _getResponse = MutableLiveData<Response<Bid>>()
+    @Bindable
+    val yourBid = MutableLiveData<String>()
+
+    fun onPlaceBidButtonClicked() {
+        insertBid(Bid(0, yourBid.toString().toLong(), java.util.Date().toString()))
+    }
+
+    fun onBackButtonClicked() {
+
+    }
+
+
+    private val _getResponse = MutableLiveData<Response<Bid>>()
     val getResponse: LiveData<Response<Bid>>
         get() = _getResponse
 
@@ -54,7 +68,7 @@ class BidViewModel(application: Application): AndroidViewModel(application) {
         _getResponses.postValue(bidRepository.getBids())
     }
 
-    fun getBidById(id: Long) = viewModelScope.launch{
+    fun getBidById(id: Long) = viewModelScope.launch {
         _getResponse.postValue(bidRepository.getBidById(id))
     }
 
