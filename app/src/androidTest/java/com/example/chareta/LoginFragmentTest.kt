@@ -31,8 +31,7 @@ class LoginFragmentTest {
     @RunWith(AndroidJUnit4::class)
     class LoginActivityTest {
 
-        @Rule
-        @JvmField
+
 
 //
 //        private val username = "beshir"
@@ -62,10 +61,7 @@ class LoginFragmentTest {
         stringToBetyped = "Login Successfully"
         stringToBetypedInUsernameEditText = "Username"
         stringToBetypedInPasswodEditText = "Password"
-        @Test
-        fun testThatErrorMessageIsNotIntiallyDisplayed(){
-            onView(withId(R.id.)).check(matches(not(isDisplayed())))
-        }
+
 //        @Test
 //        fun testPasswordLengthRulesTriggersErrorMessage(){
 //            onView(withId(R.id.password_edit_text)).perform(typeText("john"))
@@ -87,7 +83,7 @@ class LoginFragmentTest {
 
         fun loginBtnClicked_homeNavigation() {
             initValidString()
-            onView(withId(R.id))
+            onView(withId(R.i))
                 .perform(typeText(this.stringToBetypedInUsernameEditText), closeSoftKeyboard())
             onView(withId(R.id.password_edit_text))
                 .perform(typeText(stringToBetypedInPasswodEditText), closeSoftKeyboard())
@@ -113,7 +109,7 @@ class LoginFragmentTest {
         }
         @Test
         fun testLoginFragmenRedirectToHomePage(){
-            onView(withId(R.id.user_name_edit_text))
+            onView(withId(R.id.us))
                 .perform(typeText(stringToBetypedInUsernameEditText), closeSoftKeyboard())
                 .check(matches(withText("Username")))
 
