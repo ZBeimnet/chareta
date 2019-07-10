@@ -18,6 +18,7 @@ import com.example.chareta.repository.ItemRepository
 import com.example.chareta.view.PostedItemFragment
 import com.example.chareta.viewmodel.ItemViewModel
 import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -30,6 +31,7 @@ import java.util.regex.Pattern.matches
 @RunWith(AndroidJUnit4::class)
         @LargeTest
 class ItemFragmentTest {
+    private lateinit var itemRepository : ItemRepository
     @Test
     fun clickAddItemButton_navigateToAddFragment() {
         // Given a user in the home screen
@@ -48,22 +50,22 @@ class ItemFragmentTest {
                 null, getApplicationContext<Context>().getString(R.string.post_btn)))
     }
     @Test
-    fun validItem_isSaved() {
+    fun validItem_isSaved()  = runBlocking{
         // GIVEN - On the "Add Task" screen.
         val navController = mock(NavController::class.java)
         launchFragment(navController)
 
         // WHEN - Valid title and description combination and click save
         onView(withId(R.id.itemname_editext)).perform(replaceText("Item Name"))
-        onView(withId(R.id.itemdescription_edittext)).perform(replaceText("Item Description"))
+        onView(withId(R.id.item_description_edit_text)).perform(replaceText("Item Description"))
         onView(withId(R.id.startingprice_Edittext)).perform(replaceText("starting Price"))
-        onView(withId(R.id.exipray_date_password_edit_text)).perform(replaceText("Date"))
+        onView(withId(R.id.expiry_date_textview)).perform(replaceText("Date"))
         onView(withId(R.id.post_button)).perform(click())
 
 
 
         // THEN - Verify that the repository saved the task
-        val tasks = (ItemRepository.getItem as Result.Success).data
+        val tasks = (itemRepository.getItems() as Success).data
         assertEquals(tasks.size, 1)
         assertEquals(tasks[0].ItemName, "ItemName")
         assertEquals(tasks[0].Itemdescription, "Item Description")
